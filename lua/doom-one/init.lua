@@ -129,16 +129,19 @@ doom_one.set_colorscheme = function()
 	set_hl("StatusLinePartNC", { link = "StatusLinePart" })
 
 	set_hl("Pmenu", { bg = palette.bg_alt, fg = "fg" })
-	set_hl("PmenuSel", { bg = palette.blue, fg = dark_theme and palette.base0 or palette.base8 })
+	set_hl("PmenuSel", { bg = palette.blue, fg = dark_theme and palette.base0 or palette.base8, bold = true })
 	set_hl("PmenuSelBold", { bg = palette.blue, fg = dark_theme and palette.base0 or palette.base8, bold = true })
 	set_hl("PmenuSbar", { bg = palette.bg_alt })
 	set_hl("PmenuThumb", { bg = palette.grey })
 
 	--- Search, Highlight, Conceal, Messages
 	----------------------------------------
-	set_hl("Search", { bg = palette.dark_blue, fg = "fg" })
+	-- set_hl("Search", { bg = palette.dark_blue, fg = "bg" })
+	-- set_hl("Search", { bg = palette.dark_blue, fg = palette.base0 })
+	set_hl("Search", { bg = palette.dark_blue })
 	set_hl("Substitute", { fg = palette.red, bold = true, strikethrough = true })
-	set_hl("IncSearch", { bg = palette.yellow, fg = "bg", bold = true })
+	-- set_hl("IncSearch", { bg = palette.dark_blue, fg = "bg", bold = true })
+	set_hl("IncSearch", { bg = palette.dark_blue, fg = "fg", bold = true })
 	set_hl("IncSearchCursor", { reverse = true })
 
 	set_hl("Conceal", { fg = palette.grey })
@@ -346,10 +349,17 @@ doom_one.set_colorscheme = function()
 	set_hl("DiagnosticVirtualTextError", { link = "ErrorMsg" })
 	set_hl("DiagnosticVirtualTextWarn", { link = "WarningMsg" })
 	set_hl("DiagnosticVirtualTextInfo", { link = "MoreMsg" })
-	set_hl("DiagnosticVirtualTextHint", { link = "TextMuted" })
+	set_hl("DiagnosticVirtualTextHint", { link = "Msg" })
 	set_hl("LspReferenceText", { link = "LspHighlight" })
 	set_hl("LspReferenceRead", { link = "LspHighlight" })
 	set_hl("LspReferenceWrite", { link = "LspHighlight" })
+
+	--- CMP
+	------------
+  set_hl("CmpItemAbbrDeprecated", { fg = palette.fg_alt, bg = "NONE", strikethrough = true })
+  set_hl("CmpItemAbbrMatch", { fg = palette.blue, bg = "NONE" })
+  set_hl("CmpItemAbbrMatchFuzzy", { fg = palette.blue, bg = "NONE" })
+  set_hl("CmpItemMenu", { fg = palette.fg, bg = "NONE" })
 
 	--- Tree-Sitter
 	---------------
@@ -529,14 +539,14 @@ doom_one.set_colorscheme = function()
 
 	if config.plugins.telescope then
 		set_hl("TelescopeNormal", { fg = "fg" })
-		set_hl("TelescopeBorder", { fg = dark_theme and palette.blue or palette.red })
-		set_hl("TelescopePrompt", { link = "TelescopeNormal" })
+		set_hl("TelescopePrompt", { fg = palette.blue })
+    set_hl("TelescopePromptPrefix", { fg = dark_theme and palette.blue or palette.red })
+    set_hl("TelescopeBorder", { fg = dark_theme and palette.blue or palette.red })
 		set_hl("TelescopePromptBorder", { link = "TelescopeBorder" })
-		set_hl("TelescopePromptPrefix", { fg = dark_theme and palette.blue or palette.red })
 		set_hl("TelescopeResultsBorder", { link = "TelescopeBorder" })
 		set_hl("TelescopePreviewBorder", { link = "TelescopeBorder" })
-		set_hl("TelescopeMatching", { fg = palette.violet, bold = true })
-		set_hl("TelescopeSelection", { link = "VisualBold" })
+		set_hl("TelescopeMatching", { fg = palette.blue, bold = true })
+		set_hl("TelescopeSelection", { fg = palette.yellow, bold = true })
 		set_hl("TelescopeSelectionCaret", { fg = dark_theme and palette.blue or palette.red })
 	end
 
