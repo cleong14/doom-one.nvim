@@ -65,6 +65,20 @@ doom_one.set_colorscheme = function()
 
 	local dark_theme = current_bg == "dark"
 
+  local diff_info_fg = palette.orange
+  local diff_info_bg0 = utils.mix("#D8EEFD", palette.bg, 0.6)
+  local diff_info_bg1 = utils.mix("#D8EEFD", palette.bg, 0.8)
+
+  local diff_add_fg = palette.green
+  local diff_add_fg0 = utils.mix(palette.green, palette.fg, 0.4)
+  local diff_add_bg0 = utils.mix("#506d5b", palette.bg, 0.6)
+  local diff_add_bg1 = utils.mix("#acf2bd", palette.bg, 0.8)
+
+  local gh_danger_fg = palette.red
+  local gh_danger_fg0 = utils.mix(palette.red, palette.fg, 0.6)
+  local gh_danger_bg0 = utils.mix("#ffdce0", palette.bg, 0.6)
+  local gh_danger_bg1 = utils.mix("#ffdce0", palette.bg, 0.8)
+
 	--- GENERAL UI
 	-----------------
 	set_hl("Normal", { bg = config.ui.transparent_background and "NONE" or palette.bg, fg = palette.fg })
@@ -260,17 +274,26 @@ doom_one.set_colorscheme = function()
 
 	--- Diff
 	--------
-	set_hl("DiffAddedGutter", { fg = palette.green, bold = true })
-	set_hl("DiffModifiedGutter", { fg = palette.orange, bold = true })
-	set_hl("DiffRemovedGutter", { fg = palette.red, bold = true })
+	set_hl("diffLine", { fg = palette.base8, bg = diff_info_bg1 })
+	set_hl("diffSubName", { fg = palette.base8, bg = diff_info_bg1 })
+
+	set_hl("DiffAdd", { bg = diff_add_bg1 })
+	set_hl("DiffChange", { bg = diff_add_bg1 })
+	set_hl("DiffText", { bg = diff_add_bg0 })
+	set_hl("DiffDelete", { bg = gh_danger_bg0 })
+
+	set_hl("DiffAdded", { fg = diff_add_fg0, bg = diff_add_bg1 })
+	set_hl("DiffModified", { fg = palette.fg, bg = diff_info_bg0 })
+	set_hl("DiffRemoved", { fg = gh_danger_fg0, bg = gh_danger_bg1 })
+
+	set_hl("DiffAddedGutter", { fg = diff_add_fg, bold = true })
+	set_hl("DiffModifiedGutter", { fg = diff_info_fg, bold = true })
+	set_hl("DiffRemovedGutter", { fg = gh_danger_fg, bold = true })
 
 	set_hl("DiffAddedGutterLineNr", { fg = palette.grey })
 	set_hl("DiffModifiedGutterLineNr", { fg = palette.grey })
 	set_hl("DiffRemovedGutterLineNr", { fg = palette.grey })
 
-	set_hl("DiffAdd", { link = "DiffAddedGutter" })
-	set_hl("DiffChange", { link = "DiffModifiedGutter" })
-	set_hl("DiffDelete", { link = "DiffRemovedGutter" })
 
 	--- Markdown
 	------------
