@@ -37,6 +37,10 @@ local config = {
 		indent_blankline = if_nil(vim.g.doom_one_plugin_indent_blankline, true),
 		vim_illuminate = if_nil(vim.g.doom_one_plugin_vim_illuminate, true),
 		lspsaga = if_nil(vim.g.doom_one_plugin_lspsaga, false),
+		neotree = if_nil(vim.g.doom_one_plugin_neotree, false),
+		go_nvim = if_nil(vim.g.doom_one_plugin_go_nvim, false),
+		noice = if_nil(vim.g.doom_one_plugin_noice, false),
+		highlight_undo = if_nil(vim.g.doom_one_plugin_highlight_undo, false),
 	},
 }
 
@@ -634,6 +638,28 @@ doom_one.set_colorscheme = function()
 		set_hl("LspSagaDefPreviewBorder", { link = "Bold" })
 		set_hl("LspLinesDiagBorder", { link = "Bold" })
 	end
+	if config.plugins.neotree then
+		set_hl("NeoTreeFileNameOpened", { fg = palette.fg, bg = palette.dark_blue })
+		set_hl("NeoTreeTabInactive", { fg = palette.fg_alt, bg = palette.bg })
+		set_hl("NeoTreeTabActive", { fg = palette.blue, bg = palette.bg, bold = true, italic = true })
+		set_hl("NeoTreeTabSeparatorInactive", { fg = palette.base0, bg = palette.bg })
+		set_hl("NeoTreeTabSeparatorActive", { fg = palette.base0, bg = palette.bg })
+	end
+
+	if config.plugins.go_nvim then
+		set_hl("goCoveragePartial", { fg = palette.blue, bg = palette.bg })
+		set_hl("goCoverageUncovered", { link = "Error" })
+		set_hl("goCoverageCovered", { link = "String" })
+	end
+
+	if config.plugins.noice then
+		set_hl("LspSignatureActiveParameter", { link = "IncSearch" })
+	end
+
+	if config.plugins.highlight_undo then
+		set_hl("HighlightUndo", { link = "IncSearch" })
+	end
+
 end
 
 return doom_one
