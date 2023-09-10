@@ -85,6 +85,9 @@ doom_one.set_colorscheme = function()
 
 	--- GENERAL UI
 	-----------------
+  local bg_highlight = "#1D2125"
+  local fg_highlight = utils.lighten(palette.fg, 0.2)
+
 	set_hl("Normal", { bg = config.ui.transparent_background and "NONE" or palette.bg, fg = palette.fg })
 	set_hl("NormalPopup", { bg = palette.bg_alt, fg = utils.lighten(palette.fg, 0.2) })
 	set_hl("NormalPopover", { bg = palette.bg_alt, fg = utils.lighten(palette.fg, 0.2) })
@@ -110,7 +113,7 @@ doom_one.set_colorscheme = function()
 	set_hl("IndentGuideEven", { link = "IndentGuide" })
 	set_hl("IndentGuideOdd", { link = "IndentGuide" })
 
-	set_hl("TermCursor", { fg = "fg", reverse = true })
+	set_hl("TermCursor", { bg = palette.blue })
 	set_hl("TermCursorNC", { fg = palette.fg_alt, reverse = true })
 	set_hl("TermNormal", { link = "Normal" })
 	set_hl("TermNormalNC", { link = "TermNormal" })
@@ -136,11 +139,8 @@ doom_one.set_colorscheme = function()
 
 	--- Search, Highlight, Conceal, Messages
 	----------------------------------------
-	-- set_hl("Search", { bg = palette.dark_blue, fg = "bg" })
-	-- set_hl("Search", { bg = palette.dark_blue, fg = palette.base0 })
-	set_hl("Search", { bg = palette.dark_blue })
+	set_hl("Search", { bg = palette.dark_blue, fg = "fg" })
 	set_hl("Substitute", { fg = palette.red, bold = true, strikethrough = true })
-	-- set_hl("IncSearch", { bg = palette.dark_blue, fg = "bg", bold = true })
 	set_hl("IncSearch", { bg = palette.dark_blue, fg = "fg", bold = true })
 	set_hl("IncSearchCursor", { reverse = true })
 
@@ -220,8 +220,10 @@ doom_one.set_colorscheme = function()
 	set_hl("Exception", { fg = dark_theme and palette.blue or palette.red })
 	set_hl("Conditional", { fg = dark_theme and palette.blue or palette.red })
 
-	set_hl("Variable", { fg = utils.darken(palette.magenta, 0.36) })
-	set_hl("VariableBuiltin", { fg = palette.magenta, bold = true })
+	-- set_hl("Variable", { fg = utils.darken(palette.magenta, 0.36) })
+	-- set_hl("VariableBuiltin", { fg = palette.magenta, bold = true })
+	set_hl("Variable", { fg = "#8B93E6" })
+	set_hl("VariableBuiltin", { fg = "#8B93E6", bold = true })
 	set_hl("Constant", { fg = palette.violet, bold = true })
 
 	set_hl("Number", { fg = palette.orange })
@@ -304,8 +306,10 @@ doom_one.set_colorscheme = function()
 
 	--- Markdown
 	------------
-	set_hl("markdownCode", { link = "Comment" })
-	set_hl("markdownCodeBlock", { link = "markdownCode" })
+	-- set_hl("markdownCode", { link = "Comment" })
+	-- set_hl("markdownCodeBlock", { link = "markdownCode" })
+	set_hl("markdownCode", { bg = bg_highlight })
+	set_hl("markdownCodeBlock", { bg = bg_highlight })
 	set_hl("markdownH1", { bold = true })
 	set_hl("markdownH2", { bold = true })
 	set_hl("markdownLinkText", { underline = true })
@@ -385,7 +389,8 @@ doom_one.set_colorscheme = function()
 		set_hl("@label", { link = "Label" })
 		set_hl("@math", { link = "Special" })
 		set_hl("@method", { link = "Method" })
-		set_hl("@namespace", { link = "Directory" })
+		set_hl("@namespace", { link = "None" })
+		-- set_hl("@namespace", { link = "Directory" })
 		set_hl("@number", { link = "Number" })
 		set_hl("@boolean", { link = "Boolean" })
 		set_hl("@operator", { link = "Operator" })
@@ -409,13 +414,19 @@ doom_one.set_colorscheme = function()
 		set_hl("@danger", { link = "ErrorMsg" })
 		set_hl("@type", { link = "Type" })
 		set_hl("@type.builtin", { link = "TypeBuiltin" })
-		set_hl("@variable", { link = "None" })
+		-- set_hl("@type.definition", { link = "None" })
+		set_hl("@type.definition", { link = "Typedef" })
+		-- set_hl("@variable", { link = "None" })
+		set_hl("@variable", { link = "Variable" })
 		set_hl("@variable.builtin", { link = "VariableBuiltin" })
+		-- set_hl("@query.linter.error", { link = "Error" })
 		set_hl("@query.linter.error", { fg = palette.fg })
 		set_hl("@text", { link = "TextNormal" })
+		-- set_hl("@text.literal", { link = "String" })
 		set_hl("@text.strong", { link = "TextNormalBold" })
 		set_hl("@text.emphasis", { link = "Emphasis" })
-		set_hl("@text.underline", { underline = true })
+		set_hl("@text.underline", { link = "MsgUnderline" })
+		-- set_hl("@text.underline", { underline = true })
 		set_hl("@text.strike", {
 			fg = dark_theme and utils.darken(palette.violet, 0.2) or utils.lighten(palette.violet, 0.26),
 			strikethrough = true,
