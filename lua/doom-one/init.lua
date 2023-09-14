@@ -41,6 +41,7 @@ local config = {
 		go_nvim = if_nil(vim.g.doom_one_plugin_go_nvim, false),
 		noice = if_nil(vim.g.doom_one_plugin_noice, false),
 		highlight_undo = if_nil(vim.g.doom_one_plugin_highlight_undo, false),
+		vim_visual_multi = if_nil(vim.g.doom_one_plugin_vim_visual_multi, false),
 	},
 }
 
@@ -659,6 +660,9 @@ doom_one.set_colorscheme = function()
 		set_hl("LspSagaDefPreviewBorder", { link = "Bold" })
 		set_hl("LspLinesDiagBorder", { link = "Bold" })
 	end
+
+	-- neotree {{{
+
 	if config.plugins.neotree then
 		set_hl("NeoTreeFileNameOpened", { fg = palette.fg, bg = palette.dark_blue })
 		set_hl("NeoTreeTabInactive", { fg = palette.fg_alt, bg = palette.bg })
@@ -667,20 +671,45 @@ doom_one.set_colorscheme = function()
 		set_hl("NeoTreeTabSeparatorActive", { fg = palette.base0, bg = palette.bg })
 	end
 
+  -- }}}
+
+  -- go_nvim {{{
+
 	if config.plugins.go_nvim then
 		set_hl("goCoveragePartial", { fg = palette.blue, bg = palette.bg })
 		set_hl("goCoverageUncovered", { link = "Error" })
 		set_hl("goCoverageCovered", { link = "String" })
 	end
 
+  -- }}}
+
+  -- noice {{{
+
 	if config.plugins.noice then
 		set_hl("LspSignatureActiveParameter", { link = "IncSearch" })
 	end
+
+  -- }}}
+
+	-- highlight_undo{{{
 
 	if config.plugins.highlight_undo then
 		set_hl("HighlightUndo", { link = "IncSearch" })
 	end
 
+  -- }}}
+
+	-- vim_visual_multi{{{
+
+	if config.plugins.vim_visual_multi then
+		set_hl("MultiCursor", { link = "VM_Extend" })
+		-- set_hl("MultiCursor", { link = "PmenuSel" })
+	end
+
+  -- }}}
+
 end
 
 return doom_one
+
+-- vim: fdm=marker
