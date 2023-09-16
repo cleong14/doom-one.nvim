@@ -582,10 +582,12 @@ doom_one.set_colorscheme = function()
 	end
 
 	if config.plugins.dashboard then
-		set_hl("dashboardHeader", { fg = palette.grey })
+		set_hl("dashboardHeader", { fg = palette.base5 })
 		set_hl("dashboardFooter", { link = "dashboardHeader" })
 		set_hl("dashboardCenter", { fg = dark_theme and palette.blue or palette.orange })
 		set_hl("dashboardShortcut", { fg = palette.violet })
+		set_hl("DashboardIcon", { fg = dark_theme and palette.blue or palette.orange })
+		-- set_hl("DashboardKey", { fg = palette.violet })
 	end
 
 	if config.plugins.startify then
