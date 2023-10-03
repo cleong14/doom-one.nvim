@@ -474,10 +474,9 @@ doom_one.set_colorscheme = function()
 	--- Plugins integrations
 	------------------------
 	if config.plugins.indent_blankline then
-		set_hl("IndentBlanklineChar", { fg = palette.base4, nocombine = true })
-		set_hl("IndentBlanklineContextChar", { fg = dark_theme and palette.blue or palette.orange, nocombine = true })
-		set_hl("IndentBlanklineSpaceChar", { link = "IndentBlanklineChar" })
-		set_hl("IndentBlanklineSpaceCharBlankline", { link = "IndentBlanklineChar" })
+		set_hl("IblIndent", { fg = palette.base4, nocombine = true })
+		set_hl("IblScope", { fg = dark_theme and palette.blue or palette.orange, nocombine = true })
+		set_hl("IblWhitespace", { link = "IblIndent" })
 	end
 
 	if config.plugins.neorg then
