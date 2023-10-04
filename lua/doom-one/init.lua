@@ -37,6 +37,7 @@ local config = {
 		indent_blankline = if_nil(vim.g.doom_one_plugin_indent_blankline, true),
 		vim_illuminate = if_nil(vim.g.doom_one_plugin_vim_illuminate, true),
 		lspsaga = if_nil(vim.g.doom_one_plugin_lspsaga, false),
+		mason = if_nil(vim.g.doom_one_plugin_mason, false),
 		neotree = if_nil(vim.g.doom_one_plugin_neotree, false),
 		go_nvim = if_nil(vim.g.doom_one_plugin_go_nvim, false),
 		noice = if_nil(vim.g.doom_one_plugin_noice, false),
@@ -661,6 +662,16 @@ doom_one.set_colorscheme = function()
 		set_hl("LspSagaDefPreviewBorder", { link = "Bold" })
 		set_hl("LspLinesDiagBorder", { link = "Bold" })
 	end
+
+	-- mason {{{
+
+	if config.plugins.mason then
+		set_hl("MasonHighlight", { fg = palette.blue })
+		set_hl("MasonHighlightBlockBold", { link = "IncSearch" })
+		set_hl("MasonHeader", { link = "IncSearch" })
+	end
+
+  -- }}}
 
 	-- neotree {{{
 
