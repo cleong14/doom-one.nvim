@@ -71,7 +71,10 @@ doom_one.set_colorscheme = function()
 
 	local dark_theme = current_bg == "dark"
 
-  local diff_info_fg = palette.orange
+  -- local diff_info_fg = palette.blue
+  -- local diff_info_fg0 = utils.mix(palette.blue, palette.fg, 0.4)
+  local darker_diff_info_fg = utils.darken(palette.blue, 0.2)
+  local diff_info_fg0 = utils.mix(darker_diff_info_fg, palette.fg, 0.4)
   local diff_info_bg0 = utils.mix("#D8EEFD", palette.bg, 0.6)
   local diff_info_bg1 = utils.mix("#D8EEFD", palette.bg, 0.8)
 
@@ -88,7 +91,7 @@ doom_one.set_colorscheme = function()
 	--- GENERAL UI
 	-----------------
   local bg_highlight = "#1D2125"
-  local fg_highlight = utils.lighten(palette.fg, 0.2)
+  -- local fg_highlight = utils.lighten(palette.fg, 0.2)
 
 	set_hl("Normal", { bg = config.ui.transparent_background and "NONE" or palette.bg, fg = palette.fg })
 	set_hl("NormalPopup", { bg = palette.bg_alt, fg = utils.lighten(palette.fg, 0.2) })
@@ -289,16 +292,16 @@ doom_one.set_colorscheme = function()
 	set_hl("diffSubName", { fg = palette.base8, bg = diff_info_bg1 })
 
 	set_hl("DiffAdd", { bg = diff_add_bg1 })
-	set_hl("DiffChange", { bg = diff_add_bg1 })
+	set_hl("DiffChange", { bg = diff_info_bg0 })
 	set_hl("DiffText", { bg = diff_add_bg0 })
 	set_hl("DiffDelete", { bg = gh_danger_bg0 })
 
 	set_hl("DiffAdded", { fg = diff_add_fg0, bg = diff_add_bg1 })
-	set_hl("DiffModified", { fg = palette.fg, bg = diff_info_bg0 })
+	set_hl("DiffModified", { fg = diff_info_fg0, bg = diff_info_bg1 })
 	set_hl("DiffRemoved", { fg = gh_danger_fg0, bg = gh_danger_bg1 })
 
 	set_hl("DiffAddedGutter", { fg = diff_add_fg, bold = true })
-	set_hl("DiffModifiedGutter", { fg = diff_info_fg, bold = true })
+	set_hl("DiffModifiedGutter", { fg = darker_diff_info_fg, bold = true })
 	set_hl("DiffRemovedGutter", { fg = gh_danger_fg, bold = true })
 
 	set_hl("DiffAddedGutterLineNr", { fg = palette.grey })
