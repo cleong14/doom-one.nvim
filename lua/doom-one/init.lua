@@ -204,8 +204,8 @@ doom_one.set_colorscheme = function()
 	set_hl("URL", { link = "Link" })
 	set_hl("Underlined", { fg = utils.mix(palette.blue, palette.cyan, 0.5), underline = true })
 
-	set_hl("Comment", { fg = dark_theme and palette.base5 or palette.base4, italic = config.ui.italic_comments })
-	set_hl("CommentBold", { fg = dark_theme and palette.base5 or palette.base4, bold = true })
+	set_hl("Comment", { fg = dark_theme and utils.lighten(palette.base5, 0.1) or palette.base4, italic = config.ui.italic_comments })
+	set_hl("CommentBold", { fg = dark_theme and utils.lighten(palette.base5, 0.1) or palette.base4, bold = true })
 	set_hl("SpecialComment", { fg = dark_theme and palette.base7 or palette.base5, bold = true })
 
 	set_hl("Macro", { fg = palette.violet })
