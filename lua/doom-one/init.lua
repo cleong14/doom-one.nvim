@@ -100,6 +100,9 @@ doom_one.set_colorscheme = function()
 	set_hl("EndOfBuffer", { bg = "bg", fg = "bg" })
 
 	set_hl("NormalFloat", { bg = palette.bg_alt })
+	set_hl("NormalFloatBorder", { bg = palette.bg_alt, fg = dark_theme and utils.lighten(palette.base5, 0.1) or palette.base4 })
+
+  set_hl("FloatBorder", { link = "NormalFloatBorder" })
 
 	set_hl("Visual", { bg = palette.dark_blue })
 	set_hl("VisualBold", { bg = palette.dark_blue, bold = true })
@@ -610,6 +613,7 @@ doom_one.set_colorscheme = function()
 		set_hl("WhichKeySeparator", { link = "Separator" })
 		-- set_hl("WhichKeyFloat", { bg = palette.bg_alt, fg = dark_theme and palette.base2 or palette.base6 })
 		set_hl("WhichKeyFloat", { link = "NormalFloat" })
+		set_hl("WhichKeyBorder", { link = "NormalFloatBorder" })
 		set_hl("WhichKeyValue", { bg = palette.bg_alt, fg = palette.grey })
 	end
 
