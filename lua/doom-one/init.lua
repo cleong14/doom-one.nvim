@@ -710,9 +710,14 @@ doom_one.set_colorscheme = function()
 
 	if config.plugins.mason then
 		set_hl("MasonHighlight", { fg = palette.blue })
+		set_hl("MasonHighlightSecondary", { fg = palette.blue })
 		set_hl("MasonHighlightBlockBold", { link = "IncSearch" })
+		set_hl("MasonHighlightBlockSecondary", { fg = palette.blue })
+		set_hl("MasonHighlightBlockBoldSecondary", { link = "IncSearch" })
 		set_hl("MasonHeader", { link = "IncSearch" })
+		set_hl("MasonHeaderSecondary", { link = "IncSearch" })
 		set_hl("MasonMutedBlock", { link = "CursorLine" })
+		set_hl("MasonHighlightBlock", { link = "IncSearch" })
 	end
 
   -- }}}
