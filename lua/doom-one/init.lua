@@ -37,6 +37,7 @@ local config = {
 		indent_blankline = if_nil(vim.g.doom_one_plugin_indent_blankline, true),
 		vim_illuminate = if_nil(vim.g.doom_one_plugin_vim_illuminate, true),
 		lspsaga = if_nil(vim.g.doom_one_plugin_lspsaga, false),
+		bufferline = if_nil(vim.g.doom_one_plugin_bufferline, false),
 		mason = if_nil(vim.g.doom_one_plugin_mason, false),
 		neotree = if_nil(vim.g.doom_one_plugin_neotree, false),
 		go_nvim = if_nil(vim.g.doom_one_plugin_go_nvim, false),
@@ -97,6 +98,8 @@ doom_one.set_colorscheme = function()
 	set_hl("NormalPopupPrompt", { bg = palette.bg_alt, fg = palette.base7, bold = true })
 	set_hl("NormalPopupSubtle", { bg = palette.bg_alt, fg = palette.base6 })
 	set_hl("EndOfBuffer", { bg = "bg", fg = "bg" })
+
+	set_hl("NormalFloat", { bg = palette.bg_alt })
 
 	set_hl("Visual", { bg = palette.dark_blue })
 	set_hl("VisualBold", { bg = palette.dark_blue, bold = true })
@@ -350,13 +353,13 @@ doom_one.set_colorscheme = function()
 	set_hl("DiagnosticUnderlineInfo", { link = "MoreMsgUnderline" })
 	set_hl("DiagnosticUnderlineHint", { link = "MsgUnderline" })
 	set_hl("DiagnosticSignError", { link = "ErrorMsg" })
-	set_hl("DiagnosticSignWarning", { link = "WarningMsg" })
-	set_hl("DiagnosticSignInformation", { link = "MoreMsg" })
+	set_hl("DiagnosticSignWarn", { link = "WarningMsg" })
+	set_hl("DiagnosticSignInfo", { link = "MoreMsg" })
 	set_hl("DiagnosticSignHint", { link = "Msg" })
-	set_hl("DiagnosticVirtualTextError", { link = "ErrorMsg" })
-	set_hl("DiagnosticVirtualTextWarn", { link = "WarningMsg" })
-	set_hl("DiagnosticVirtualTextInfo", { link = "MoreMsg" })
-	set_hl("DiagnosticVirtualTextHint", { link = "Msg" })
+	-- set_hl("DiagnosticVirtualTextError", { link = "ErrorMsg" })
+	-- set_hl("DiagnosticVirtualTextWarn", { link = "WarningMsg" })
+	-- set_hl("DiagnosticVirtualTextInfo", { link = "MoreMsg" })
+	-- set_hl("DiagnosticVirtualTextHint", { link = "Msg" })
 	set_hl("LspReferenceText", { link = "LspHighlight" })
 	set_hl("LspReferenceRead", { link = "LspHighlight" })
 	set_hl("LspReferenceWrite", { link = "LspHighlight" })
@@ -601,12 +604,13 @@ doom_one.set_colorscheme = function()
 	end
 
 	if config.plugins.whichkey then
-		set_hl("WhichKey", { fg = dark_theme and palette.blue or palette.red })
-		set_hl("WhichKeyGroup", { fg = palette.magenta })
-		set_hl("WhichKeyDesc", { fg = palette.magenta })
+		set_hl("WhichKey", { bg = palette.bg_alt, fg = dark_theme and palette.blue or palette.red })
+		set_hl("WhichKeyGroup", { bg = palette.bg_alt, fg = palette.magenta })
+		set_hl("WhichKeyDesc", { bg = palette.bg_alt, fg = palette.magenta })
 		set_hl("WhichKeySeparator", { link = "Separator" })
-		set_hl("WhichKeyFloat", { fg = dark_theme and palette.base2 or palette.base6 })
-		set_hl("WhichKeyValue", { fg = palette.grey })
+		-- set_hl("WhichKeyFloat", { bg = palette.bg_alt, fg = dark_theme and palette.base2 or palette.base6 })
+		set_hl("WhichKeyFloat", { link = "NormalFloat" })
+		set_hl("WhichKeyValue", { bg = palette.bg_alt, fg = palette.grey })
 	end
 
 	if config.plugins.nvim_tree then
@@ -664,12 +668,21 @@ doom_one.set_colorscheme = function()
 		set_hl("LspLinesDiagBorder", { link = "Bold" })
 	end
 
+	-- bufferline {{{
+
+	if config.plugins.bufferline then
+		set_hl("BufferlineWarningSelected", { link = "TextWarning" })
+	end
+
+  -- }}}
+
 	-- mason {{{
 
 	if config.plugins.mason then
 		set_hl("MasonHighlight", { fg = palette.blue })
 		set_hl("MasonHighlightBlockBold", { link = "IncSearch" })
 		set_hl("MasonHeader", { link = "IncSearch" })
+		set_hl("MasonMutedBlock", { link = "CursorLine" })
 	end
 
   -- }}}
