@@ -718,6 +718,7 @@ doom_one.set_colorscheme = function()
 
 	if config.plugins.noice then
 		set_hl("LspSignatureActiveParameter", { link = "IncSearch" })
+		set_hl("NoiceMini", { link = "Comment" })
 	end
 
   -- }}}
