@@ -719,6 +719,9 @@ doom_one.set_colorscheme = function()
 	if config.plugins.noice then
 		set_hl("LspSignatureActiveParameter", { link = "IncSearch" })
 		set_hl("NoiceMini", { link = "Comment" })
+		set_hl("NoiceCmdlinePopupBorder", { fg = palette.blue, bg = palette.bg })
+		set_hl("NoiceCmdlinePopupBorderSearch", { fg = palette.yellow, bg = palette.bg })
+		set_hl("NoiceCmdlinePopup", { bg = palette.bg })
 	end
 
   -- }}}
