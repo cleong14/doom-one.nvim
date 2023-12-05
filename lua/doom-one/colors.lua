@@ -8,7 +8,8 @@
 local colors = {
   dark = {
     -- bg = "#282c34", -- default editor background
-    bg = "#24272E",  -- editor background
+    bg = "#24272E",  -- editor background - usual
+    -- bg = "#171d23",  -- editor background - darker (MyCustom_DoomOne_TokyoNight_Night)
     fg = "#bbc2cf",
 
     -- bg_alt = "#21242b", -- default cursorline

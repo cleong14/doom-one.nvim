@@ -139,6 +139,9 @@ doom_one.set_colorscheme = function()
 	set_hl("VertSplit", { bg = "bg", fg = palette.grey })
 	set_hl("VertSplitSubtle", { bg = palette.bg_alt, fg = palette.grey })
 
+	set_hl("WinSeparator", { bg = config.ui.transparent_background and "NONE" or palette.bg, fg = palette.fg_alt })
+	set_hl("WinSeparatorSubtle", { bg = config.ui.transparent_background and "NONE" or palette.bg_alt, fg = palette.fg_alt })
+
 	set_hl("TabLine", { bg = palette.bg_alt, fg = palette.base7, bold = true })
 	set_hl("TabLineSel", { bg = "bg", fg = palette.blue, bold = true })
 	set_hl("TabLineFill", { bg = palette.base1, bold = true })
@@ -726,10 +729,10 @@ doom_one.set_colorscheme = function()
 
 	if config.plugins.neotree then
 		set_hl("NeoTreeFileNameOpened", { fg = palette.fg, bg = palette.dark_blue })
-		set_hl("NeoTreeTabInactive", { fg = palette.fg_alt, bg = palette.bg })
+		set_hl("NeoTreeTabInactive", { fg = palette.fg_alt, bg = palette.bg_alt })
 		set_hl("NeoTreeTabActive", { fg = palette.blue, bg = palette.bg, bold = true, italic = true })
-		set_hl("NeoTreeTabSeparatorInactive", { fg = palette.base0, bg = palette.bg })
-		set_hl("NeoTreeTabSeparatorActive", { fg = palette.base0, bg = palette.bg })
+		set_hl("NeoTreeTabSeparatorInactive", { fg = palette.base0, bg = palette.bg_alt })
+		set_hl("NeoTreeTabSeparatorActive", { fg = palette.base0, bg = palette.bg_alt })
 	  set_hl("NeoTreeGitModified", { fg = palette.orange, bold = true })
 	end
 
