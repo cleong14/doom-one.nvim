@@ -39,11 +39,13 @@ local config = {
 		lspsaga = if_nil(vim.g.doom_one_plugin_lspsaga, false),
 		bufferline = if_nil(vim.g.doom_one_plugin_bufferline, false),
 		mason = if_nil(vim.g.doom_one_plugin_mason, false),
+		search_nvim = if_nil(vim.g.doom_one_plugin_search_nvim, false),
 		neotree = if_nil(vim.g.doom_one_plugin_neotree, false),
 		go_nvim = if_nil(vim.g.doom_one_plugin_go_nvim, false),
 		noice = if_nil(vim.g.doom_one_plugin_noice, false),
 		highlight_undo = if_nil(vim.g.doom_one_plugin_highlight_undo, false),
 		vim_visual_multi = if_nil(vim.g.doom_one_plugin_vim_visual_multi, false),
+		gitsigns = if_nil(vim.g.doom_one_plugin_gitsigns, false),
 	},
 }
 
@@ -162,7 +164,9 @@ doom_one.set_colorscheme = function()
 	set_hl("Search", { bg = palette.dark_blue, fg = "fg" })
 	set_hl("Substitute", { fg = palette.red, bold = true, strikethrough = true })
 	set_hl("IncSearch", { bg = palette.dark_blue, fg = "fg", bold = true })
-	set_hl("IncSearchCursor", { reverse = true })
+	set_hl("IncSearchCursor", { reverse = true, bold = true })
+
+	set_hl("CurSearch", { link = "IncSearch" })
 
 	set_hl("Conceal", { fg = palette.grey })
 	set_hl("SpecialKey", { fg = palette.violet, bold = true })
@@ -304,6 +308,8 @@ doom_one.set_colorscheme = function()
 	set_hl("CommentLabel", { link = "CommentBold" })
 	set_hl("CommentSection", { link = "CommentBold" })
 	set_hl("Noise", { link = "Comment" })
+
+	set_hl("QuickFixLine", { link = "Search" })
 
 	--- Diff
 	--------
@@ -725,6 +731,17 @@ doom_one.set_colorscheme = function()
 
   -- }}}
 
+	-- search_nvim {{{
+
+	if config.plugins.search_nvim then
+		set_hl("ActiveSearchTab", { link = "IncSearch" })
+		set_hl("FailedSearchTab", { link = "Error" })
+		set_hl("InactiveSearchTab", { fg = palette.fg_alt, bg = palette.bg_alt })
+		set_hl("WaitingSearchTab", { link = "Warning" })
+	end
+
+  -- }}}
+
 	-- neotree {{{
 
 	if config.plugins.neotree then
@@ -734,6 +751,7 @@ doom_one.set_colorscheme = function()
 		set_hl("NeoTreeTabSeparatorInactive", { fg = palette.base0, bg = palette.bg_alt })
 		set_hl("NeoTreeTabSeparatorActive", { fg = palette.base0, bg = palette.bg_alt })
 	  set_hl("NeoTreeGitModified", { fg = palette.orange, bold = true })
+	  -- set_hl("NeoTreeFloatNormal", { link = "NormalFloatNoBg" })
 	end
 
   -- }}}
@@ -754,11 +772,12 @@ doom_one.set_colorscheme = function()
 		set_hl("LspSignatureActiveParameter", { link = "IncSearch" })
 		set_hl("NoiceMini", { link = "Comment" })
 		-- set_hl("NoiceCmdlinePopupBorder", { fg = palette.blue, bg = palette.bg })
-		set_hl("NoiceCmdlinePopupBorderSearch", { fg = palette.yellow, bg = palette.bg })
+		-- set_hl("NoiceCmdlinePopupBorderSearch", { fg = palette.yellow, bg = palette.bg })
+		-- set_hl("NoiceCmdlinePopupBorderSearch", { link = "DiagnosticSignWarn" })
 		-- set_hl("NoiceCmdlinePopup", { bg = palette.bg })
-		set_hl("NoiceCmdlinePopup", { link = "Normal" })
-		set_hl("NoiceCmdlinePopupBorder", { link = "DiagnosticSignInfo" })
-		set_hl("NoiceSplit", { link = "NormalFloat" })
+		-- set_hl("NoiceCmdlinePopup", { link = "Normal" })
+		-- set_hl("NoiceCmdlinePopupBorder", { link = "DiagnosticSignInfo" })
+		-- set_hl("NoiceSplit", { link = "NormalFloat" })
 		set_hl("NoiceSplitBorder", { link = "NormalFloatBorder" })
 	end
 
@@ -776,7 +795,17 @@ doom_one.set_colorscheme = function()
 
 	if config.plugins.vim_visual_multi then
 		set_hl("MultiCursor", { link = "VM_Extend" })
-		-- set_hl("MultiCursor", { link = "PmenuSel" })
+		set_hl("VM_Insert", { link = "Visual" })
+	end
+
+  -- }}}
+
+	-- gitsigns{{{
+
+	if config.plugins.gitsigns then
+		set_hl("GitSignsAddInline", { link = "TermCursorNC" })
+		set_hl("GitSignsDeleteInline", { link = "TermCursorNC" })
+		set_hl("GitSignsChangeInline", { link = "TermCursorNC" })
 	end
 
   -- }}}
