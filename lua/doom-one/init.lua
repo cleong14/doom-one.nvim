@@ -814,4 +814,4 @@ end
 
 return doom_one
 
--- vim: fdm=marker
+-- vim: fdm=marker:
