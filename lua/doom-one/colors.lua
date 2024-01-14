@@ -7,18 +7,18 @@
 
 local colors = {
   dark = {
-    bg = "#282c34", -- default editor background
-    -- bg = "#24272E",  -- editor background - usual
-    -- bg = "#171d23",  -- editor background - darker (MyCustom_DoomOne_TokyoNight_Night)
+    -- bg = "#282c34", -- default editor background (also found in OneDark Palette)
+    -- bg = "#24272E",  -- editor background - preferred (same palette just 1 shade darker than #282c34)
+    bg = "#171d23",  -- editor background - darker (MyCustom_DoomOne_TokyoNight_Night)
     fg = "#bbc2cf",
 
-    -- bg_alt = "#21242b", -- default cursorline
-    bg_alt = "#1D2026", -- cursorline
+    bg_alt = "#21242b", -- default cursorline
+    -- bg_alt = "#1D2026", -- cursorline
     fg_alt = "#5b6268",
 
 		base0 = "#1b2229",
 		base1 = "#1c1e1e",
-		-- base1 = "#171d23", -- MyCustom_DoomOne_TokyoNight_Night
+		-- base1 = "#171d23", -- editor background - darker (MyCustom_DoomOne_TokyoNight_Night)
 		base2 = "#202328",
 		base3 = "#23272e",
 		base4 = "#3f444a",

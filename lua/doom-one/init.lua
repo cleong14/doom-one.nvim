@@ -105,8 +105,11 @@ doom_one.set_colorscheme = function()
 	set_hl("NormalFloatNoBgBorder", { bg = palette.bg, fg = dark_theme and palette.fg_alt or palette.base4 })
 	-- set_hl("NormalFloatNoBgBorder", { bg = palette.bg, fg = dark_theme and utils.lighten(palette.base5, 0.1) or palette.base4 })
 
-	set_hl("NormalFloat", { bg = palette.bg_alt })
-	set_hl("NormalFloatBorder", { bg = palette.bg_alt, fg = dark_theme and palette.fg_alt or palette.base4 })
+	-- set_hl("NormalFloat", { bg = palette.bg_alt })
+	set_hl("NormalFloat", { bg = "bg" })
+	-- set_hl("NormalFloatBorder", { fg = dark_theme and palette.fg_alt or palette.base4 })
+	set_hl("NormalFloatBorder", { bg = "bg", fg = dark_theme and palette.fg_alt or palette.base4 })
+	set_hl("NormalFloatBgAltBorder", { bg = palette.bg_alt, fg = dark_theme and palette.fg_alt or palette.base4 })
 	-- set_hl("NormalFloatBorder", { bg = palette.bg_alt, fg = dark_theme and utils.lighten(palette.base5, 0.1) or palette.base4 })
 
   set_hl("FloatBorderNoBg", { link = "NormalFloatNoBgBorder" })
@@ -144,19 +147,26 @@ doom_one.set_colorscheme = function()
 	set_hl("WinSeparator", { bg = config.ui.transparent_background and "NONE" or palette.bg, fg = palette.fg_alt })
 	set_hl("WinSeparatorSubtle", { bg = config.ui.transparent_background and "NONE" or palette.bg_alt, fg = palette.fg_alt })
 
+  -- `NC` - not current focus
+  set_hl("WinBar", { bg = "bg" })
+  set_hl("WinBarNC", { bg = "bg" })
+
 	set_hl("TabLine", { bg = palette.bg_alt, fg = palette.base7, bold = true })
 	set_hl("TabLineSel", { bg = "bg", fg = palette.blue, bold = true })
 	set_hl("TabLineFill", { bg = palette.base1, bold = true })
 
-	set_hl("StatusLine", { bg = dark_theme and palette.base3 or palette.base2, fg = palette.base8 })
+	-- set_hl("StatusLine", { bg = dark_theme and palette.base3 or palette.base2, fg = palette.base8 })
+	set_hl("StatusLine", { bg = "bg", fg = palette.base8 })
 	set_hl("StatusLineNC", { bg = palette.bg_alt, fg = palette.base6 })
 	set_hl("StatusLinePart", { bg = palette.bg_alt, fg = palette.base6, bold = true })
 	set_hl("StatusLinePartNC", { link = "StatusLinePart" })
 
-	set_hl("Pmenu", { bg = palette.bg_alt, fg = "fg" })
+	-- set_hl("Pmenu", { bg = palette.bg_alt, fg = "fg" })
+	set_hl("Pmenu", { bg = palette.bg, fg = "fg" })
 	set_hl("PmenuSel", { bg = palette.blue, fg = dark_theme and palette.base0 or palette.base8, bold = true })
 	set_hl("PmenuSelBold", { bg = palette.blue, fg = dark_theme and palette.base0 or palette.base8, bold = true })
-	set_hl("PmenuSbar", { bg = palette.bg_alt })
+	-- set_hl("PmenuSbar", { bg = palette.bg_alt })
+	set_hl("PmenuSbar", { bg = palette.bg })
 	set_hl("PmenuThumb", { bg = palette.grey })
 
 	--- Search, Highlight, Conceal, Messages
@@ -624,14 +634,24 @@ doom_one.set_colorscheme = function()
 	end
 
 	if config.plugins.whichkey then
-		set_hl("WhichKey", { bg = palette.bg_alt, fg = dark_theme and palette.blue or palette.red })
-		set_hl("WhichKeyGroup", { bg = palette.bg_alt, fg = palette.magenta })
-		set_hl("WhichKeyDesc", { bg = palette.bg_alt, fg = palette.magenta })
+		-- set_hl("WhichKey", { bg = palette.bg_alt, fg = dark_theme and palette.blue or palette.red })
+		-- set_hl("WhichKeyGroup", { bg = palette.bg_alt, fg = palette.magenta })
+		-- set_hl("WhichKeyDesc", { bg = palette.bg_alt, fg = palette.magenta })
+		-- -- set_hl("WhichKeySeparator", { link = "Separator" })
+		-- set_hl("WhichKeySeparator", { link = "SeparatorSubtle" })
+		-- set_hl("WhichKeyFloat", { link = "NormalFloat" })
+		-- -- set_hl("WhichKeyBorder", { link = "NormalFloatBgAltBorder" })
+		-- set_hl("WhichKeyValue", { bg = palette.bg_alt, fg = palette.grey })
+		set_hl("WhichKey", { bg = palette.bg, fg = dark_theme and palette.blue or palette.red })
+		set_hl("WhichKeyGroup", { bg = palette.bg, fg = palette.magenta })
+		set_hl("WhichKeyDesc", { bg = palette.bg, fg = palette.magenta })
 		-- set_hl("WhichKeySeparator", { link = "Separator" })
 		set_hl("WhichKeySeparator", { link = "SeparatorSubtle" })
 		set_hl("WhichKeyFloat", { link = "NormalFloat" })
+		-- set_hl("WhichKeyBorder", { link = "NormalFloatBgAltBorder" })
 		set_hl("WhichKeyBorder", { link = "NormalFloatBorder" })
-		set_hl("WhichKeyValue", { bg = palette.bg_alt, fg = palette.grey })
+		-- set_hl("WhichKeyValue", { bg = palette.bg_alt, fg = palette.grey })
+		set_hl("WhichKeyValue", { bg = palette.bg, fg = palette.grey })
 	end
 
 	if config.plugins.nvim_tree then
@@ -711,6 +731,9 @@ doom_one.set_colorscheme = function()
 		set_hl("BufferLineWarningDiagnostic", { sp = "NONE" })
 		set_hl("BufferLineInfoDiagnostic", { sp = "NONE" })
 		set_hl("BufferLineHintDiagnostic", { sp = "NONE" })
+		set_hl("BufferLineFill", { bg = "bg" })
+		set_hl("BufferLineTabSeparator", { bg = "bg" })
+		set_hl("TabLineFill", { bg = "bg" })
 	end
 
   -- }}}
@@ -725,9 +748,31 @@ doom_one.set_colorscheme = function()
 		set_hl("MasonHighlightBlockBoldSecondary", { link = "IncSearch" })
 		set_hl("MasonHeader", { link = "IncSearch" })
 		set_hl("MasonHeaderSecondary", { link = "IncSearch" })
-		set_hl("MasonMutedBlock", { link = "CursorLine" })
+		set_hl("MasonMutedBlock", { bg = "bg" })
 		set_hl("MasonHighlightBlock", { link = "IncSearch" })
 	end
+
+  -- }}}
+
+	-- lazy {{{
+
+  --  -- TODO: setup lazy integration
+  --  --
+	-- if config.plugins.lazy then
+	-- 	set_hl("LazyButton", { bg = "bg" })
+	-- end
+  set_hl("LazyButton", { bg = "bg" })
+
+  -- }}}
+
+	-- dropbar {{{
+
+  --  -- TODO: setup dropbar integration
+  --  --
+	-- if config.plugins.dropbar then
+	-- 	set_hl("DropBarMenuCurrentContext", { link = "Visual" })
+	-- end
+  set_hl("DropBarMenuCurrentContext", { link = "Visual" })
 
   -- }}}
 
@@ -745,11 +790,18 @@ doom_one.set_colorscheme = function()
 	-- neotree {{{
 
 	if config.plugins.neotree then
+		-- set_hl("NeoTreeFileNameOpened", { fg = palette.fg, bg = palette.dark_blue })
+		-- set_hl("NeoTreeTabInactive", { fg = palette.fg_alt, bg = palette.bg_alt })
+		-- set_hl("NeoTreeTabActive", { fg = palette.blue, bg = palette.bg, bold = true, italic = true })
+		-- set_hl("NeoTreeTabSeparatorInactive", { fg = palette.base0, bg = palette.bg_alt })
+		-- set_hl("NeoTreeTabSeparatorActive", { fg = palette.base0, bg = palette.bg_alt })
+	 --  set_hl("NeoTreeGitModified", { fg = palette.orange, bold = true })
+	 --  -- set_hl("NeoTreeFloatNormal", { link = "NormalFloatNoBg" })
 		set_hl("NeoTreeFileNameOpened", { fg = palette.fg, bg = palette.dark_blue })
-		set_hl("NeoTreeTabInactive", { fg = palette.fg_alt, bg = palette.bg_alt })
-		set_hl("NeoTreeTabActive", { fg = palette.blue, bg = palette.bg, bold = true, italic = true })
-		set_hl("NeoTreeTabSeparatorInactive", { fg = palette.base0, bg = palette.bg_alt })
-		set_hl("NeoTreeTabSeparatorActive", { fg = palette.base0, bg = palette.bg_alt })
+		set_hl("NeoTreeTabInactive", { fg = palette.fg_alt, bg = palette.bg })
+		set_hl("NeoTreeTabActive", { fg = palette.blue, bg = palette.bg, bold = true, italic = false })
+		set_hl("NeoTreeTabSeparatorInactive", { fg = palette.base0, bg = palette.bg })
+		set_hl("NeoTreeTabSeparatorActive", { fg = palette.base0, bg = palette.bg })
 	  set_hl("NeoTreeGitModified", { fg = palette.orange, bold = true })
 	  -- set_hl("NeoTreeFloatNormal", { link = "NormalFloatNoBg" })
 	end
