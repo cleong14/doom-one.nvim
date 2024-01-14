@@ -211,8 +211,10 @@ doom_one.set_colorscheme = function()
 	}
 
 	for group, hl in pairs(text_colors) do
-		set_hl("Text" .. group, { fg = hl })
-		set_hl("Text" .. group .. "Bold", { fg = hl, bold = true })
+		-- set_hl("Text" .. group, { fg = hl })
+		-- set_hl("Text" .. group .. "Bold", { fg = hl, bold = true })
+		set_hl("Text" .. group, { bg = "NONE", fg = hl })
+		set_hl("Text" .. group .. "Bold", { bg = "NONE", fg = hl, bold = true })
 	end
 
 	set_hl("Msg", { link = "TextSuccess" })
