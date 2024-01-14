@@ -140,7 +140,8 @@ doom_one.set_colorscheme = function()
 
 	set_hl("WildMenu", { bg = palette.dark_blue, fg = "fg" })
 	set_hl("Separator", { fg = palette.fg_alt })
-	set_hl("SeparatorSubtle", { bg = palette.bg_alt, fg = palette.fg_alt })
+	-- set_hl("SeparatorSubtle", { bg = palette.bg_alt, fg = palette.fg_alt })
+	set_hl("SeparatorSubtle", { bg = palette.bg, fg = palette.fg_alt })
 	set_hl("VertSplit", { bg = "bg", fg = palette.grey })
 	set_hl("VertSplitSubtle", { bg = palette.bg_alt, fg = palette.grey })
 
