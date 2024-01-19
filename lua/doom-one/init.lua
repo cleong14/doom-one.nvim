@@ -75,19 +75,19 @@ doom_one.set_colorscheme = function()
 	local dark_theme = current_bg == "dark"
 
   -- local diff_info_fg = palette.blue
-  local darker_diff_info_fg = utils.darken(palette.blue, 0.2)
-  local diff_info_bg0 = utils.mix("#D8EEFD", palette.bg, 0.6)
-  local diff_info_bg1 = utils.mix("#D8EEFD", palette.bg, 0.8)
+  local diff_info_fg = utils.darken(palette.blue, 0.2)
+  -- local diff_info_bg0 = utils.darken(utils.mix("#D8EEFD", palette.bg, 0.6), 0.6)
+  local diff_info_bg1 = utils.darken(utils.mix("#D8EEFD", palette.bg, 0.8), 0.5)
 
   local diff_add_fg = palette.green
-  local diff_add_fg0 = utils.mix(palette.green, palette.fg, 0.4)
-  local diff_add_bg0 = utils.mix("#506d5b", palette.bg, 0.6)
-  local diff_add_bg1 = utils.mix("#acf2bd", palette.bg, 0.8)
+  local diff_add_fg0 = utils.mix(palette.green, palette.base0, 0.0)
+  local diff_add_bg0 = utils.darken(utils.mix("#506d5b", palette.bg, 0.6), 0.5)
+  local diff_add_bg1 = utils.darken(utils.mix("#acf2bd", palette.bg, 0.8), 0.5)
 
   local gh_danger_fg = palette.red
-  local gh_danger_fg0 = utils.mix(palette.red, palette.fg, 0.6)
-  local gh_danger_bg0 = utils.mix("#ffdce0", palette.bg, 0.6)
-  local gh_danger_bg1 = utils.mix("#ffdce0", palette.bg, 0.8)
+  local gh_danger_fg0 = utils.mix(palette.red, palette.base0, 0.0)
+  local gh_danger_bg0 = utils.darken(utils.mix("#ffdce0", palette.bg, 0.6), 0.5)
+  local gh_danger_bg1 = utils.darken(utils.mix("#ffdce0", palette.bg, 0.8), 0.5)
 
 	--- GENERAL UI
 	-----------------
@@ -335,11 +335,11 @@ doom_one.set_colorscheme = function()
 	set_hl("DiffDelete", { bg = gh_danger_bg0 })
 
 	set_hl("DiffAdded", { fg = diff_add_fg0, bg = diff_add_bg1 })
-	set_hl("DiffModified", { fg = palette.fg, bg = diff_info_bg0 })
+	set_hl("DiffModified", { fg = palette.fg, bg = diff_info_bg1 })
 	set_hl("DiffRemoved", { fg = gh_danger_fg0, bg = gh_danger_bg1 })
 
 	set_hl("DiffAddedGutter", { fg = diff_add_fg, bold = true })
-	set_hl("DiffModifiedGutter", { fg = darker_diff_info_fg, bold = true })
+	set_hl("DiffModifiedGutter", { fg = diff_info_fg, bold = true })
 	set_hl("DiffRemovedGutter", { fg = gh_danger_fg, bold = true })
 
 	set_hl("DiffAddedGutterLineNr", { fg = palette.grey })
@@ -542,7 +542,7 @@ doom_one.set_colorscheme = function()
 		set_hl("Brown", { fg = palette.orange })
 
     -- Headlines support
-    -- NOTE: requires custom highlight groups in headlines setup!
+    -- Note: requires custom highlight groups in headlines setup!
     set_hl("Headline1", { bg = utils.blend(utils.get_hl("NeorgHeading1Title", "foreground"), palette.bg, 0.18) })
     set_hl("Headline2", { bg = utils.blend(utils.get_hl("NeorgHeading2Title", "foreground"), palette.bg, 0.18) })
     set_hl("Headline3", { bg = utils.blend(utils.get_hl("NeorgHeading3Title", "foreground"), palette.bg, 0.18) })
@@ -858,9 +858,9 @@ doom_one.set_colorscheme = function()
 	-- gitsigns{{{
 
 	if config.plugins.gitsigns then
-		set_hl("GitSignsAddInline", { link = "TermCursorNC" })
-		set_hl("GitSignsDeleteInline", { link = "TermCursorNC" })
-		set_hl("GitSignsChangeInline", { link = "TermCursorNC" })
+		set_hl("GitSignsAddInline", { link = "DiffAdded" })
+		set_hl("GitSignsDeleteInline", { link = "DiffRemoved" })
+		set_hl("GitSignsChangeInline", { link = "DiffModified" })
 	end
 
   -- }}}
