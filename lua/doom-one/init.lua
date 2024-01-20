@@ -74,8 +74,7 @@ doom_one.set_colorscheme = function()
 
 	local dark_theme = current_bg == "dark"
 
-  -- local diff_info_fg = palette.blue
-  local diff_info_fg = utils.darken(palette.blue, 0.2)
+  local diff_info_fg = palette.blue
   -- local diff_info_bg0 = utils.darken(utils.mix("#D8EEFD", palette.bg, 0.6), 0.6)
   local diff_info_bg1 = utils.darken(utils.mix("#D8EEFD", palette.bg, 0.8), 0.5)
 
@@ -306,7 +305,7 @@ doom_one.set_colorscheme = function()
 	set_hl("Method", { fg = dark_theme and palette.violet or palette.cyan })
 
 	set_hl("Type", { fg = palette.yellow })
-	set_hl("Typedef", { fg = dark_theme and palette.blue or palette.red })
+	set_hl("TypeDefinition", { fg = dark_theme and palette.blue or palette.red })
 	set_hl("TypeBuiltin", { fg = palette.yellow, bold = true })
 	set_hl("Class", { fg = dark_theme and palette.blue or palette.red })
 	set_hl("StorageClass", { fg = dark_theme and palette.blue or palette.red })
@@ -453,28 +452,27 @@ doom_one.set_colorscheme = function()
 		set_hl("@danger", { link = "ErrorMsg" })
 		set_hl("@type", { link = "Type" })
 		set_hl("@type.builtin", { link = "TypeBuiltin" })
-		-- set_hl("@type.definition", { link = "None" })
-		set_hl("@type.definition", { link = "Typedef" })
-		-- set_hl("@variable", { link = "None" })
+		set_hl("@type.definition", { link = "TypeDefinition" })
 		set_hl("@variable", { link = "Variable" })
 		set_hl("@variable.builtin", { link = "VariableBuiltin" })
-		-- set_hl("@query.linter.error", { link = "Error" })
 		set_hl("@query.linter.error", { fg = palette.fg })
-		set_hl("@text", { link = "TextNormal" })
-		set_hl("@text.literal", { link = "String" })
-		set_hl("@text.strong", { link = "TextNormalBold" })
-		set_hl("@text.emphasis", { link = "Emphasis" })
-		set_hl("@text.underline", { link = "MsgUnderline" })
-		-- set_hl("@text.underline", { underline = true })
-		set_hl("@text.strike", {
+		set_hl("@markup.strong", { link = "TextNormalBold" })
+		set_hl("@markup.italic", { link = "Emphasis" })
+		set_hl("@markup.underline", { link = "MsgUnderline" })
+		set_hl("@markup.strikethrough", {
 			fg = dark_theme and utils.darken(palette.violet, 0.2) or utils.lighten(palette.violet, 0.26),
 			strikethrough = true,
 		})
-		set_hl("@text.title", { link = "Title" })
-		set_hl("@text.uri", { link = "URL" })
-		set_hl("@text.note", { link = "TextInfo" })
-		set_hl("@text.warning", { link = "TextWarning" })
-		set_hl("@text.danger", { link = "TextError" })
+		set_hl("@markup.heading", { link = "Title" })
+		set_hl("@markup.quote", { link = "Comment" })
+		set_hl("@markup.link", { link = "String" })
+		set_hl("@markup.link.label", { link = "Attribute" })
+		set_hl("@markup.link.url", { link = "URL" })
+		set_hl("@markup.raw", { link = "String" })
+		set_hl("@markup.raw.block", { link = "Label" })
+		set_hl("@markup.list", { link = "TypeDefinition" })
+		set_hl("@markup.list.checked", { link = "TypeBuiltin" })
+		set_hl("@markup.list.unchecked", { link = "TypeBuiltin" })
 		set_hl("@todo", { link = "Todo" })
 	end
 
