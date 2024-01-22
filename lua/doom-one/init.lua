@@ -74,23 +74,18 @@ doom_one.set_colorscheme = function()
 
 	local dark_theme = current_bg == "dark"
 
-  local diff_info_fg = palette.blue
-  -- local diff_info_bg0 = utils.darken(utils.mix("#D8EEFD", palette.bg, 0.6), 0.6)
-  local diff_info_bg1 = utils.darken(utils.mix("#D8EEFD", palette.bg, 0.8), 0.5)
+  local diff_change_fg = palette.blue
+  local diff_change_bg = utils.darken(utils.mix("#D8EEFD", palette.bg, 0.8), 0.2)
 
   local diff_add_fg = palette.green
-  local diff_add_fg0 = utils.mix(palette.green, palette.base0, 0.0)
-  local diff_add_bg0 = utils.darken(utils.mix("#506d5b", palette.bg, 0.6), 0.5)
-  local diff_add_bg1 = utils.darken(utils.mix("#acf2bd", palette.bg, 0.8), 0.5)
+  local diff_add_bg = utils.darken(utils.mix("#acf2bd", palette.bg, 0.8), 0.2)
 
-  local gh_danger_fg = palette.red
-  local gh_danger_fg0 = utils.mix(palette.red, palette.base0, 0.0)
-  local gh_danger_bg0 = utils.darken(utils.mix("#ffdce0", palette.bg, 0.6), 0.5)
-  local gh_danger_bg1 = utils.darken(utils.mix("#ffdce0", palette.bg, 0.8), 0.5)
+  local diff_delete_fg = palette.red
+  local diff_delete_bg = utils.darken(utils.mix("#ffdce0", palette.bg, 0.8), 0.2)
 
 	--- GENERAL UI
 	-----------------
-  local bg_highlight = "#1D2125"
+  -- local bg_highlight = "#1D2125"
   -- local fg_highlight = utils.lighten(palette.fg, 0.2)
 
 	set_hl("Normal", { bg = config.ui.transparent_background and "NONE" or palette.bg, fg = palette.fg })
@@ -201,6 +196,7 @@ doom_one.set_colorscheme = function()
 	local text_colors = {
 		Normal = palette.fg,
 		Info = palette.blue,
+		Hint = palette.green,
 		Success = palette.green,
 		Warning = palette.yellow,
 		Debug = palette.yellow,
@@ -305,7 +301,7 @@ doom_one.set_colorscheme = function()
 	set_hl("Method", { fg = dark_theme and palette.violet or palette.cyan })
 
 	set_hl("Type", { fg = palette.yellow })
-	set_hl("TypeDefinition", { fg = dark_theme and palette.blue or palette.red })
+	set_hl("Typedef", { fg = dark_theme and palette.blue or palette.red })
 	set_hl("TypeBuiltin", { fg = palette.yellow, bold = true })
 	set_hl("Class", { fg = dark_theme and palette.blue or palette.red })
 	set_hl("StorageClass", { fg = dark_theme and palette.blue or palette.red })
@@ -325,21 +321,21 @@ doom_one.set_colorscheme = function()
 
 	--- Diff
 	--------
-	set_hl("diffLine", { fg = palette.base8, bg = diff_info_bg1 })
-	set_hl("diffSubName", { fg = palette.base8, bg = diff_info_bg1 })
+	set_hl("diffLine", { fg = palette.base8, bg = diff_change_bg })
+	set_hl("diffSubName", { fg = palette.base8, bg = diff_change_bg })
 
-	set_hl("DiffAdd", { bg = diff_add_bg1 })
-	set_hl("DiffChange", { bg = diff_add_bg1 })
-	set_hl("DiffText", { bg = diff_add_bg0 })
-	set_hl("DiffDelete", { bg = gh_danger_bg0 })
+	set_hl("DiffAdd", { bg = palette.grey })
+	set_hl("DiffChange", { bg = palette.grey })
+	set_hl("DiffText", { bg = palette.grey })
+	set_hl("DiffDelete", { bg = palette.grey })
 
-	set_hl("DiffAdded", { fg = diff_add_fg0, bg = diff_add_bg1 })
-	set_hl("DiffModified", { fg = palette.fg, bg = diff_info_bg1 })
-	set_hl("DiffRemoved", { fg = gh_danger_fg0, bg = gh_danger_bg1 })
+	set_hl("DiffAdded", { fg = diff_add_fg, bg = diff_add_bg })
+	set_hl("DiffModified", { fg = diff_change_fg, bg = diff_change_bg })
+	set_hl("DiffRemoved", { fg = diff_delete_fg, bg = diff_delete_bg })
 
 	set_hl("DiffAddedGutter", { fg = diff_add_fg, bold = true })
-	set_hl("DiffModifiedGutter", { fg = diff_info_fg, bold = true })
-	set_hl("DiffRemovedGutter", { fg = gh_danger_fg, bold = true })
+	set_hl("DiffModifiedGutter", { fg = diff_change_fg, bold = true })
+	set_hl("DiffRemovedGutter", { fg = diff_delete_fg, bold = true })
 
 	set_hl("DiffAddedGutterLineNr", { fg = palette.grey })
 	set_hl("DiffModifiedGutterLineNr", { fg = palette.grey })
@@ -406,74 +402,164 @@ doom_one.set_colorscheme = function()
 	--- Tree-Sitter
 	---------------
 	if config.ui.enable_treesitter then
+    -- These groups are for the Neovim tree-sitter highlights.
 		set_hl("@annotation", { link = "PreProc" })
 		set_hl("@attribute", { link = "Attribute" })
-		set_hl("@conditional", { link = "Conditional" })
+		set_hl("@boolean", { link = "Boolean" })
+		set_hl("@character", { link = "Character" })
+		set_hl("@character.special", { link = "SpecialChar" })
 		set_hl("@comment", { link = "Comment" })
-		set_hl("@constructor", { link = "Structure" })
+		set_hl("@keyword.conditional", { link = "Conditional" })
 		set_hl("@constant", { link = "Constant" })
-		set_hl("@constant.builtin", { link = "Constant" })
-		set_hl("@constant.macro", { link = "Macro" })
-		set_hl("@error", { link = "Error" })
-		set_hl("@exception", { link = "Exception" })
-		set_hl("@field", { link = "Field" })
-		set_hl("@float", { link = "Float" })
+		set_hl("@constant.builtin", { link = "Special" })
+		set_hl("@constant.macro", { link = "Define" })
+		set_hl("@keyword.debug", { link = "TextDebug" })
+		set_hl("@keyword.directive.define", { link = "Define" })
+		set_hl("@keyword.exception", { link = "Exception" })
+		set_hl("@number.float", { link = "Float" })
 		set_hl("@function", { link = "Function" })
 		set_hl("@function.builtin", { link = "FunctionBuiltin" })
+		set_hl("@function.call", { link = "@function" })
 		set_hl("@function.macro", { link = "Macro" })
-		set_hl("@include", { link = "Include" })
-		set_hl("@keyword", { link = "Keyword" })
-		set_hl("@keyword.function", { link = "KeywordFunction" })
-		set_hl("@label", { link = "Label" })
-		set_hl("@math", { link = "Special" })
-		set_hl("@method", { link = "Method" })
-		set_hl("@namespace", { link = "None" })
-		-- set_hl("@namespace", { link = "Directory" })
+		set_hl("@keyword.import", { link = "Include" })
+		set_hl("@keyword.coroutine", { link = "@keyword" })
+		set_hl("@keyword.operator", { link = "@operator" })
+		set_hl("@keyword.return", { link = "@keyword" })
+		-- set_hl("@function.method", { link = "Function" })
+		set_hl("@function.method", { link = "Method" })
+		set_hl("@function.method.call", { link = "@function.method" })
+		set_hl("@namespace.builtin", { link = "@variable.builtin" })
+		set_hl("@none", {})
 		set_hl("@number", { link = "Number" })
-		set_hl("@boolean", { link = "Boolean" })
-		set_hl("@operator", { link = "Operator" })
-		set_hl("@parameter", { link = "Argument" })
-		set_hl("@parameter.reference", { link = "Argument" })
-		set_hl("@property", { link = "Property" })
-		set_hl("@punctuation.delimiter", { link = "Delimiter" })
-		set_hl("@punctuation.bracket", { link = "Delimiter" })
-		set_hl("@punctuation.special", { link = "Delimiter" })
-		set_hl("@repeat", { link = "Repeat" })
+		set_hl("@keyword.directive", { link = "PreProc" })
+		set_hl("@keyword.repeat", { link = "Repeat" })
+		set_hl("@keyword.storage", { link = "StorageClass" })
 		set_hl("@string", { link = "String" })
-		set_hl("@string.regex", { link = "StringDelimiter" })
-		set_hl("@string.escape", { link = "StringDelimiter" })
-		set_hl("@structure", { link = "Structure" })
-		set_hl("@tag", { link = "Tag" })
-		set_hl("@tag.attribute", { link = "Attribute" })
+		set_hl("@markup.link.label", { link = "Title" })
+		set_hl("@markup.link.label.symbol", { link = "Title" })
+		set_hl("@tag", { link = "Label" })
+		set_hl("@tag.attribute", { link = "@property" })
 		set_hl("@tag.delimiter", { link = "Delimiter" })
-		set_hl("@strong", { link = "Bold" })
-		set_hl("@uri", { link = "URL" })
-		set_hl("@warning", { link = "WarningMsg" })
-		set_hl("@danger", { link = "ErrorMsg" })
-		set_hl("@type", { link = "Type" })
-		set_hl("@type.builtin", { link = "TypeBuiltin" })
-		set_hl("@type.definition", { link = "TypeDefinition" })
-		set_hl("@variable", { link = "Variable" })
-		set_hl("@variable.builtin", { link = "VariableBuiltin" })
-		set_hl("@query.linter.error", { fg = palette.fg })
-		set_hl("@markup.strong", { link = "TextNormalBold" })
-		set_hl("@markup.italic", { link = "Emphasis" })
-		set_hl("@markup.underline", { link = "MsgUnderline" })
+		set_hl("@markup", { link = "@none" })
+		set_hl("@markup.environment", { link = "Macro" })
+		set_hl("@markup.environment.name", { link = "Type" })
+		-- set_hl("@markup.raw", { link = "String" })
+		set_hl("@markup.math", { link = "Special" })
+		set_hl("@markup.strong", { bold = true })
+		set_hl("@markup.emphasis", { italic = true })
+		set_hl("@markup.italic", { italic = true })
 		set_hl("@markup.strikethrough", {
 			fg = dark_theme and utils.darken(palette.violet, 0.2) or utils.lighten(palette.violet, 0.26),
 			strikethrough = true,
 		})
+		set_hl("@markup.underline", { underline = true })
 		set_hl("@markup.heading", { link = "Title" })
-		set_hl("@markup.quote", { link = "Comment" })
-		set_hl("@markup.link.label", { link = "Attribute" })
+		set_hl("@comment.note", { link = "TextHint" })
+		set_hl("@comment.error", { link = "TextError" })
+		set_hl("@comment.info", { link = "TextInfo" })
+		set_hl("@comment.hint", { link = "TextHint" })
+		set_hl("@comment.warning", { link = "TextWarning" })
+		set_hl("@comment.todo", { link = "Todo" })
 		set_hl("@markup.link.url", { link = "URL" })
-		set_hl("@markup.raw", { link = "String" })
-		set_hl("@markup.raw.block", { link = "String" })
-		set_hl("@conceal", { link = "Delimiter" })
+		set_hl("@type", { link = "Type" })
+		set_hl("@type.definition", { link = "Typedef" })
+		set_hl("@type.qualifier", { link = "@keyword" })
+    --- Misc
+		-- set_hl("@comment.documentation", {})
+		set_hl("@operator", { link = "Operator" })
+    --- Punctuation
+		set_hl("@punctuation.delimiter", { link = "Delimiter" })
+		set_hl("@punctuation.bracket", { link = "Delimiter" })
+		set_hl("@punctuation.special", { link = "Delimiter" })
 		set_hl("@markup.list", { link = "Delimiter" })
-		set_hl("@markup.list.checked", { link = "TypeBuiltin" })
+		set_hl("@markup.list.markdown", { link = "Delimiter" })
+    --- Literals
+		set_hl("@string.documentation", { link = "String" })
+		set_hl("@string.regexp", { link = "StringDelimiter" })
+		set_hl("@string.escape", { link = "StringDelimiter" })
+    --- Functions
+		set_hl("@constructor", { link = "Structure" })
+		set_hl("@variable.parameter", { link = "Argument" })
+		set_hl("@variable.parameter.builtin", { link = "VariableBuiltin" })
+    --- Keywords
+		set_hl("@keyword", { link = "Keyword" })
+		set_hl("@keyword.function", { link = "KeywordFunction" })
+
+		set_hl("@label", { link = "Label" })
+
+    --- Types
+		set_hl("@type.builtin", { link = "TypeBuiltin" })
+		set_hl("@variable.member", { link = "Field" })
+		set_hl("@property", { link = "Property" })
+
+    --- Identifiers
+		set_hl("@variable", { link = "Variable" })
+		set_hl("@variable.builtin", { link = "VariableBuiltin" })
+		set_hl("@module.builtin", { link = "VariableBuiltin" })
+
+    --- Text
+		-- set_hl("@markup.raw.markdown", { link = "String" })
+		set_hl("@markup.raw.markdown_inline", { link = "String" })
+		set_hl("@markup.raw.block", { link = "String" })
+		set_hl("@markup.raw.delimiter", { link = "Delimiter" })
+		set_hl("@markup.link", { link = "Delimiter" })
+
 		set_hl("@markup.list.unchecked", { link = "TypeBuiltin" })
-		set_hl("@todo", { link = "Todo" })
+		set_hl("@markup.list.checked", { link = "TypeBuiltin" })
+
+		set_hl("@diff.plus", { link = "DiffAdded" })
+		set_hl("@diff.minus", { link = "DiffRemoved" })
+		set_hl("@diff.delta", { link = "DiffModified" })
+
+		set_hl("@module", { link = "Include" })
+
+    -- tsx
+		set_hl("@tag.tsx", { link = "@tag" })
+		set_hl("@constructor.tsx", { link = "@constructor" })
+		set_hl("@tag.delimiter.tsx", { link = "@tag.delimiter" })
+
+    -- LSP Semantic Token Groups
+		set_hl("@lsp.type.boolean", { link = "@boolean" })
+		set_hl("@lsp.type.builtinType", { link = "@type.builtin" })
+		set_hl("@lsp.type.comment", { link = "@comment" })
+		set_hl("@lsp.type.decorator", { link = "@attribute" })
+		set_hl("@lsp.type.deriveHelper", { link = "@attribute" })
+		set_hl("@lsp.type.enum", { link = "@type" })
+		set_hl("@lsp.type.enumMember", { link = "@constant" })
+		set_hl("@lsp.type.escapeSequence", { link = "@string.escape" })
+		set_hl("@lsp.type.formatSpecifier", { link = "@markup.list" })
+		set_hl("@lsp.type.generic", { link = "@variable" })
+		set_hl("@lsp.type.interface", { link = "@type.definition" })
+    set_hl("@lsp.type.keyword", { link = "@keyword" })
+    set_hl("@lsp.type.lifetime", { link = "@keyword.storage" })
+    set_hl("@lsp.type.namespace", { link = "@module" })
+		set_hl("@lsp.type.number", { link = "@number" })
+		set_hl("@lsp.type.operator", { link = "@operator" })
+		set_hl("@lsp.type.parameter", { link = "@variable.parameter" })
+		set_hl("@lsp.type.property", { link = "@property" })
+		set_hl("@lsp.type.selfKeyword", { link = "@variable.builtin" })
+		set_hl("@lsp.type.selfTypeKeyword", { link = "@variable.builtin" })
+    set_hl("@lsp.type.string", { link = "@string" })
+    set_hl("@lsp.type.typeAlias", { link = "@type.definition" })
+    set_hl("@lsp.type.unresolvedReference", { link = "ErrorMsgUnderline" })
+    set_hl("@lsp.type.variable", {})
+    set_hl("@lsp.typemod.class.defaultLibrary", { link = "@type.builtin" })
+    set_hl("@lsp.typemod.enum.defaultLibrary", { link = "@type.builtin" })
+    set_hl("@lsp.typemod.enumMember.defaultLibrary", { link = "@constant.builtin" })
+    set_hl("@lsp.typemod.function.defaultLibrary", { link = "@function.builtin" })
+    set_hl("@lsp.typemod.keyword.async", { link = "@keyword.coroutine" })
+    set_hl("@lsp.typemod.keyword.injected", { link = "@keyword" })
+    set_hl("@lsp.typemod.macro.defaultLibrary", { link = "@function.builtin" })
+    set_hl("@lsp.typemod.method.defaultLibrary", { link = "@function.builtin" })
+    set_hl("@lsp.typemod.operator.injected", { link = "@operator" })
+    set_hl("@lsp.typemod.string.injected", { link = "@string" })
+    set_hl("@lsp.typemod.struct.defaultLibrary", { link = "@type.builtin" })
+    set_hl("@lsp.typemod.type.defaultLibrary", { link = "@type.definition" })
+    set_hl("@lsp.typemod.typeAlias.defaultLibrary", { link = "@type.definition" })
+    set_hl("@lsp.typemod.variable.callable", { link = "@function" })
+    set_hl("@lsp.typemod.variable.defaultLibrary", { link = "@variable.builtin" })
+    set_hl("@lsp.typemod.variable.injected", { link = "@variable" })
+    set_hl("@lsp.typemod.variable.static", { link = "@constant" })
 	end
 
 	--- NetRW
