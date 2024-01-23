@@ -406,7 +406,6 @@ doom_one.set_colorscheme = function()
     --
     -- NOTE: only configure what you need to; over configuration will begin to mess up colorscheme
     --
-    --
     set_hl("@annotation", { link = "PreProc" })
     set_hl("@attribute", { link = "Attribute" })
     set_hl("@boolean", { link = "Boolean" })
