@@ -189,7 +189,7 @@ doom_one.set_colorscheme = function()
   set_hl("Title", { fg = palette.violet, bold = true })
 
   set_hl("Bold", { bold = true })
-  set_hl("Emphasis", { italic = true })
+  set_hl("Emphasis", { italic = false })
 
   --- Text Levels
   ---------------
@@ -448,8 +448,8 @@ doom_one.set_colorscheme = function()
     -- -- set_hl("@markup.raw", { link = "String" })
     set_hl("@markup.math", { link = "Special" })
     set_hl("@markup.strong", { bold = true })
-    set_hl("@markup.emphasis", { italic = true })
-    set_hl("@markup.italic", { italic = true })
+    set_hl("@markup.emphasis", { italic = false })
+    set_hl("@markup.italic", { italic = false })
     set_hl("@markup.strikethrough", {
       fg = dark_theme and utils.darken(palette.violet, 0.2) or utils.lighten(palette.violet, 0.26),
       strikethrough = true,
