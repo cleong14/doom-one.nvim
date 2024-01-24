@@ -515,10 +515,10 @@ doom_one.set_colorscheme = function()
     -- set_hl("@markup.list.markdown", { link = "Delimiter" })
     -- --- Literals
     -- set_hl("@string.documentation", { link = "String" })
-    -- set_hl("@string.regexp", { link = "StringDelimiter" })
-    -- set_hl("@string.escape", { link = "StringDelimiter" })
-    -- set_hl("@string.special", { link = "StringDelimiter" })
-    -- set_hl("@string.special.symbol", { link = "StringDelimiter" })
+    set_hl("@string.regexp", { link = "StringDelimiter" })
+    set_hl("@string.escape", { link = "StringDelimiter" })
+    set_hl("@string.special", { link = "StringDelimiter" })
+    set_hl("@string.special.symbol", { link = "StringDelimiter" })
     set_hl("@string.special.url", { link = "URL" })
     -- --- Functions
     -- --
