@@ -76,6 +76,7 @@ doom_one.set_colorscheme = function()
 
   local diff_change_fg = palette.blue
   local diff_change_bg = utils.darken(utils.mix("#D8EEFD", palette.bg, 0.8), 0.2)
+  local diff_change_linebg = utils.darken(utils.mix("#D8EEFD", palette.bg, 0.8), 0.4)
 
   local diff_add_fg = palette.green
   local diff_add_bg = utils.darken(utils.mix("#acf2bd", palette.bg, 0.8), 0.2)
@@ -189,7 +190,7 @@ doom_one.set_colorscheme = function()
   set_hl("Title", { fg = palette.violet, bold = true })
 
   set_hl("Bold", { bold = true })
-  set_hl("Emphasis", { italic = false })
+  set_hl("Emphasis", { italic = true })
 
   --- Text Levels
   ---------------
@@ -197,6 +198,7 @@ doom_one.set_colorscheme = function()
     Normal = palette.fg,
     Info = palette.blue,
     Hint = palette.green,
+    Ok = palette.green,
     Success = palette.green,
     Warning = palette.yellow,
     Debug = palette.yellow,
@@ -218,11 +220,21 @@ doom_one.set_colorscheme = function()
   set_hl("MoreMsgBold", { link = "TextInfoBold" })
   set_hl("WarningMsg", { link = "TextWarning" })
   set_hl("WarningMsgBold", { link = "TextWarningBold" })
-  set_hl("Error", { link = "TextError" })
   set_hl("ErrorMsg", { link = "TextError" })
   set_hl("ErrorMsgBold", { link = "TextErrorBold" })
   set_hl("ModeMsg", { link = "TextSpecial" })
   set_hl("Todo", { link = "TextWarningBold" })
+
+  set_hl("Error", { link = "TextError" })
+  set_hl("ErrorBold", { link = "TextErrorBold" })
+  set_hl("Warning", { link = "TextWarning" })
+  set_hl("WarningBold", { link = "TextWarningBold" })
+  set_hl("Info", { link = "TextInfo" })
+  set_hl("InfoBold", { link = "TextInfoBold" })
+  set_hl("Hint", { link = "TextHint" })
+  set_hl("HintBold", { link = "TextHintBold" })
+  set_hl("Ok", { link = "TextOk" })
+  set_hl("OkBold", { link = "TextOkBold" })
 
   --- Checkhealth
   ---------------
@@ -291,7 +303,7 @@ doom_one.set_colorscheme = function()
     "Identifier",
     { fg = dark_theme and utils.lighten(palette.magenta, 0.4) or utils.darken(palette.magenta, 0.36) }
   )
-  set_hl("Property", { fg = palette.magenta })
+  set_hl("Property", { link = "Identifier" })
   set_hl("Function", { fg = palette.magenta })
   set_hl("FunctionBuiltin", {
     fg = dark_theme and utils.lighten(palette.magenta, 0.4) or utils.darken(palette.magenta, 0.2),
@@ -321,8 +333,8 @@ doom_one.set_colorscheme = function()
 
   --- Diff
   --------
-  set_hl("diffLine", { fg = palette.base8, bg = diff_change_bg })
-  set_hl("diffSubName", { fg = palette.base8, bg = diff_change_bg })
+  set_hl("diffLine", { fg = palette.base8, bg = diff_change_linebg })
+  set_hl("diffSubName", { fg = palette.base8, bg = diff_change_linebg })
 
   set_hl("DiffAdd", { bg = palette.grey })
   set_hl("DiffChange", { bg = palette.grey })
@@ -388,6 +400,11 @@ doom_one.set_colorscheme = function()
   set_hl("DiagnosticSignWarn", { link = "WarningMsg" })
   set_hl("DiagnosticSignInfo", { link = "MoreMsg" })
   set_hl("DiagnosticSignHint", { link = "Msg" })
+  set_hl("DiagnosticError", { link = "ErrorMsg" })
+  set_hl("DiagnosticWarn", { link = "WarningMsg" })
+  set_hl("DiagnosticInfo", { link = "MoreMsg" })
+  set_hl("DiagnosticHint", { link = "Msg" })
+  set_hl("DiagnosticOk", { link = "Msg" })
   set_hl("LspReferenceText", { link = "LspHighlight" })
   set_hl("LspReferenceRead", { link = "LspHighlight" })
   set_hl("LspReferenceWrite", { link = "LspHighlight" })
@@ -409,67 +426,88 @@ doom_one.set_colorscheme = function()
     set_hl("@annotation", { link = "PreProc" })
     set_hl("@attribute", { link = "Attribute" })
     set_hl("@boolean", { link = "Boolean" })
-    -- set_hl("@character", { link = "Character" })
-    -- set_hl("@character.special", { link = "SpecialChar" })
+    --
+    set_hl("@character", { link = "Character" })
+    set_hl("@character.special", { link = "SpecialChar" })
+    --
     set_hl("@comment", { link = "Comment" })
-    set_hl("@keyword.conditional", { link = "Conditional" })
+    -- set_hl("@keyword.conditional", { link = "Conditional" })
     set_hl("@constant", { link = "Constant" })
-    set_hl("@constant.builtin", { link = "Constant" })
-    set_hl("@constant.macro", { link = "Macro" })
+    -- set_hl("@constant.builtin", { link = "Constant" })
+    -- set_hl("@constant.macro", { link = "Macro" })
+    -- --
     -- set_hl("@keyword.debug", { link = "TextDebug" })
     -- set_hl("@keyword.directive.define", { link = "Define" })
-    set_hl("@keyword.exception", { link = "Exception" })
-    set_hl("@number.float", { link = "Float" })
+    -- --
+    -- set_hl("@keyword.exception", { link = "Exception" })
+    -- set_hl("@number.float", { link = "Float" })
     set_hl("@function", { link = "Function" })
     set_hl("@function.builtin", { link = "FunctionBuiltin" })
+    -- --
     -- set_hl("@function.call", { link = "@function" })
-    set_hl("@function.macro", { link = "Macro" })
+    -- --
+    -- set_hl("@function.macro", { link = "Macro" })
+    -- --
     -- set_hl("@keyword.import", { link = "Include" })
     -- set_hl("@keyword.coroutine", { link = "@keyword" })
     -- set_hl("@keyword.operator", { link = "@operator" })
     -- set_hl("@keyword.return", { link = "@keyword" })
-    set_hl("@function.method", { link = "Method" })
+    -- --
+    -- set_hl("@function.method", { link = "Method" })
+    -- --
     -- set_hl("@function.method.call", { link = "@function.method" })
     -- set_hl("@namespace.builtin", { link = "@variable.builtin" })
     -- set_hl("@none", {})
+    -- --
     set_hl("@number", { link = "Number" })
-    -- set_hl("@keyword.directive", { link = "PreProc" })
-    set_hl("@keyword.repeat", { link = "Repeat" })
+    -- -- set_hl("@keyword.directive", { link = "PreProc" })
+    -- set_hl("@keyword.repeat", { link = "Repeat" })
+    -- --
     -- set_hl("@keyword.storage", { link = "StorageClass" })
     set_hl("@string", { link = "String" })
-    set_hl("@markup.link.label", { link = "Title" })
+    set_hl("@markup.link.label", { link = "Identifier" })
     -- set_hl("@markup.link.label.symbol", { link = "Title" })
+    -- --
     set_hl("@tag", { link = "Tag" })
     set_hl("@tag.attribute", { link = "Attribute" })
     set_hl("@tag.delimiter", { link = "Delimiter" })
+    -- --
     -- set_hl("@markup", { link = "@none" })
     -- set_hl("@markup.environment", { link = "Macro" })
     -- set_hl("@markup.environment.name", { link = "Type" })
     -- -- set_hl("@markup.raw", { link = "String" })
-    set_hl("@markup.math", { link = "Special" })
+    --
+    -- set_hl("@markup.math", { link = "Special" })
     set_hl("@markup.strong", { bold = true })
-    set_hl("@markup.emphasis", { italic = false })
-    set_hl("@markup.italic", { italic = false })
+    set_hl("@markup.emphasis", { fg = palette.fg_alt, italic = false })
+    set_hl("@markup.italic", { fg = palette.fg_alt, italic = false })
     set_hl("@markup.strikethrough", {
       fg = dark_theme and utils.darken(palette.violet, 0.2) or utils.lighten(palette.violet, 0.26),
       strikethrough = true,
     })
     set_hl("@markup.underline", { underline = true })
     set_hl("@markup.heading", { link = "Title" })
-    set_hl("@comment.note", { link = "TextHint" })
-    set_hl("@comment.error", { link = "TextError" })
-    set_hl("@comment.info", { link = "TextInfo" })
-    set_hl("@comment.hint", { link = "TextHint" })
-    set_hl("@comment.warning", { link = "TextWarning" })
-    set_hl("@comment.todo", { link = "Todo" })
+    -- --
+    -- set_hl("@comment.note", { link = "TextHint" })
+    -- set_hl("@comment.error", { link = "TextError" })
+    -- set_hl("@comment.info", { link = "TextInfo" })
+    -- set_hl("@comment.hint", { link = "TextHint" })
+    -- set_hl("@comment.warning", { link = "TextWarning" })
+    -- set_hl("@comment.todo", { link = "Todo" })
+    -- --
     set_hl("@markup.link.url", { link = "URL" })
+    -- --
     set_hl("@type", { link = "Type" })
     set_hl("@type.definition", { link = "Typedef" })
+    -- --
     -- set_hl("@type.qualifier", { link = "@keyword" })
     -- --- Misc
     -- -- set_hl("@comment.documentation", {})
+    -- --
     set_hl("@operator", { link = "Operator" })
+    -- --
     --- Punctuation
+    set_hl("@punctuation", { link = "Delimiter" })
     set_hl("@punctuation.delimiter", { link = "Delimiter" })
     set_hl("@punctuation.bracket", { link = "Delimiter" })
     set_hl("@punctuation.special", { link = "Delimiter" })
@@ -477,21 +515,30 @@ doom_one.set_colorscheme = function()
     -- set_hl("@markup.list.markdown", { link = "Delimiter" })
     -- --- Literals
     -- set_hl("@string.documentation", { link = "String" })
-    set_hl("@string.regexp", { link = "StringDelimiter" })
-    set_hl("@string.escape", { link = "StringDelimiter" })
+    -- set_hl("@string.regexp", { link = "StringDelimiter" })
+    -- set_hl("@string.escape", { link = "StringDelimiter" })
+    -- set_hl("@string.special", { link = "StringDelimiter" })
+    -- set_hl("@string.special.symbol", { link = "StringDelimiter" })
+    set_hl("@string.special.url", { link = "URL" })
     -- --- Functions
+    -- --
     set_hl("@constructor", { link = "Structure" })
-    set_hl("@variable.parameter", { link = "Argument" })
-    set_hl("@variable.parameter.builtin", { link = "Argument" })
+    -- set_hl("@variable.parameter", { link = "Argument" })
+    -- set_hl("@variable.parameter.builtin", { link = "Argument" })
+    -- --
     --- Keywords
+    -- --
     set_hl("@keyword", { link = "Keyword" })
-    set_hl("@keyword.function", { link = "KeywordFunction" })
+    -- set_hl("@keyword.function", { link = "KeywordFunction" })
+    -- --
     --
     set_hl("@label", { link = "Label" })
     --
-    -- --- Types
+    --- Types
+    --
     set_hl("@type.builtin", { link = "TypeBuiltin" })
-    set_hl("@variable.member", { link = "Field" })
+    -- set_hl("@variable.member", { link = "Field" })
+    --
     set_hl("@property", { link = "Property" })
     --
     --- Identifiers
@@ -509,12 +556,31 @@ doom_one.set_colorscheme = function()
     set_hl("@markup.list.unchecked", { link = "TypeBuiltin" })
     set_hl("@markup.list.checked", { link = "TypeBuiltin" })
 
+    set_hl("@markup.quote", { link = "Comment" })
+
     set_hl("@diff.plus", { link = "DiffAdded" })
     set_hl("@diff.minus", { link = "DiffRemoved" })
     set_hl("@diff.delta", { link = "DiffModified" })
-    --
-    set_hl("@module", { link = "Include" })
-    --
+
+    -- bash
+    set_hl("bashSpecialVariables", { link = "SpecialBold" })
+    set_hl("bashStatement", { link = "Statement" })
+
+    -- sh
+    set_hl("shArithParen", { link = "@punctuation.bracket" })
+    set_hl("shDblBrace", { link = "@punctuation.bracket" })
+    set_hl("shDblParen", { link = "@punctuation.bracket" })
+    set_hl("shIf", { link = "Keyword" })
+    set_hl("shFor", { link = "Keyword" })
+    set_hl("shOK", { link = "Success" })
+
+    -- zsh
+    set_hl("zshBrackets", { link = "@punctuation.bracket" })
+    set_hl("zshParentheses", { link = "@punctuation.bracket" })
+    set_hl("zshFunction", { link = "@function" })
+    set_hl("zshOperator", { link = "@operator" })
+    set_hl("zshVariable", { link = "@variable" })
+    set_hl("zshVariableDef", { link = "Define" })
 
     -- -- tsx
     -- set_hl("@tag.tsx", { link = "@tag" })
