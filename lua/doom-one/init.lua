@@ -287,7 +287,7 @@ doom_one.set_colorscheme = function()
   set_hl("String", { fg = palette.green })
   set_hl("StringDelimiter", { link = "String" })
 
-  set_hl("Special", { fg = palette.violet })
+  set_hl("Special", { fg = palette.violet, bold = true })
   set_hl("SpecialBold", { fg = palette.violet, bold = true })
 
   set_hl("Field", { fg = palette.violet })
