@@ -253,7 +253,7 @@ doom_one.set_colorscheme = function()
   set_hl("CommentBold", { fg = dark_theme and utils.lighten(palette.base5, 0.1) or palette.base4, bold = true })
   set_hl("SpecialComment", { fg = dark_theme and palette.base7 or palette.base5, bold = true })
 
-  set_hl("Macro", { fg = palette.violet })
+  set_hl("Macro", { fg = palette.violet, bold = true })
   set_hl("Define", { fg = palette.violet, bold = true })
   set_hl("Include", { fg = palette.violet, bold = true })
   set_hl("PreProc", { fg = palette.violet, bold = true })
@@ -514,11 +514,12 @@ doom_one.set_colorscheme = function()
     set_hl("@markup.list", { link = "Delimiter" })
     -- set_hl("@markup.list.markdown", { link = "Delimiter" })
     -- --- Literals
-    -- set_hl("@string.documentation", { link = "String" })
+    set_hl("@string.documentation", { link = "String" })
     set_hl("@string.regexp", { link = "StringDelimiter" })
     set_hl("@string.escape", { link = "StringDelimiter" })
     set_hl("@string.special", { link = "StringDelimiter" })
     set_hl("@string.special.symbol", { link = "StringDelimiter" })
+    set_hl("@string.special.path", { link = "StringDelimiter" })
     set_hl("@string.special.url", { link = "URL" })
     -- --- Functions
     -- --
