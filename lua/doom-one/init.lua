@@ -168,7 +168,7 @@ doom_one.set_colorscheme = function()
   --- Search, Highlight, Conceal, Messages
   ----------------------------------------
   set_hl("Search", { bg = palette.dark_blue, fg = "fg" })
-  set_hl("Substitute", { fg = palette.red, bold = true, strikethrough = true })
+  set_hl("Substitute", { fg = palette.red, bold = true, strikethrough = false })
   set_hl("IncSearch", { bg = palette.dark_blue, fg = "fg", bold = true })
   set_hl("IncSearchCursor", { reverse = true, bold = true })
 
@@ -176,7 +176,8 @@ doom_one.set_colorscheme = function()
 
   set_hl("Conceal", { fg = palette.grey })
   set_hl("SpecialKey", { fg = palette.violet, bold = true })
-  set_hl("NonText", { fg = palette.fg_alt, bold = true })
+  -- set_hl("NonText", { fg = palette.fg_alt, bold = true })
+  set_hl("NonText", { ctermbg = "NONE", ctermfg = "NONE" })
   set_hl("MatchParen", { fg = palette.red, bold = true })
   set_hl("Whitespace", { fg = palette.grey })
 
@@ -190,7 +191,12 @@ doom_one.set_colorscheme = function()
   set_hl("Title", { fg = palette.violet, bold = true })
 
   set_hl("Bold", { bold = true })
-  set_hl("Emphasis", { italic = true })
+  set_hl("Emphasis", { italic = false })
+
+  set_hl("SpellBad", { underline = true })
+  set_hl("SpellCap", { underline = true })
+  set_hl("SpellRare", { underline = true })
+  set_hl("SpellLocal", { underline = true })
 
   --- Text Levels
   ---------------
@@ -249,7 +255,9 @@ doom_one.set_colorscheme = function()
   set_hl("URL", { link = "Link" })
   set_hl("Underlined", { fg = utils.mix(palette.blue, palette.cyan, 0.5), underline = true })
 
-  set_hl("Comment", { fg = dark_theme and utils.lighten(palette.base5, 0.1) or palette.base4, italic = config.ui.italic_comments })
+  set_hl("Italic", { italic = false })
+  -- set_hl("Italic", { fg = dark_theme and utils.lighten(palette.base6, 0.1) or palette.base5, italic = false })
+  set_hl("Comment", { fg = dark_theme and utils.lighten(palette.base5, 0.1) or palette.base4, italic = false })
   set_hl("CommentBold", { fg = dark_theme and utils.lighten(palette.base5, 0.1) or palette.base4, bold = true })
   set_hl("SpecialComment", { fg = dark_theme and palette.base7 or palette.base5, bold = true })
 
@@ -318,6 +326,7 @@ doom_one.set_colorscheme = function()
   set_hl("Class", { fg = dark_theme and palette.blue or palette.red })
   set_hl("StorageClass", { fg = dark_theme and palette.blue or palette.red })
   set_hl("Structure", { fg = dark_theme and palette.blue or palette.red })
+  set_hl("Constructor", { fg = dark_theme and palette.blue or palette.red })
 
   set_hl("Regexp", { fg = "#dd0093" })
   set_hl("RegexpSpecial", { fg = "#a40073" })
@@ -431,9 +440,10 @@ doom_one.set_colorscheme = function()
     set_hl("@character.special", { link = "SpecialChar" })
     --
     set_hl("@comment", { link = "Comment" })
-    -- set_hl("@keyword.conditional", { link = "Conditional" })
+    set_hl("@keyword.conditional", { link = "Conditional" })
+    set_hl("@keyword.conditional.ternary", { link = "Conditional" })
     set_hl("@constant", { link = "Constant" })
-    -- set_hl("@constant.builtin", { link = "Constant" })
+    set_hl("@constant.builtin", { link = "Constant" })
     -- set_hl("@constant.macro", { link = "Macro" })
     -- --
     -- set_hl("@keyword.debug", { link = "TextDebug" })
@@ -460,8 +470,8 @@ doom_one.set_colorscheme = function()
     -- set_hl("@none", {})
     -- --
     set_hl("@number", { link = "Number" })
-    -- -- set_hl("@keyword.directive", { link = "PreProc" })
-    -- set_hl("@keyword.repeat", { link = "Repeat" })
+    set_hl("@keyword.directive", { link = "PreProc" })
+    set_hl("@keyword.repeat", { link = "Repeat" })
     -- --
     -- set_hl("@keyword.storage", { link = "StorageClass" })
     set_hl("@string", { link = "String" })
@@ -480,7 +490,8 @@ doom_one.set_colorscheme = function()
     -- set_hl("@markup.math", { link = "Special" })
     set_hl("@markup.strong", { bold = true })
     set_hl("@markup.emphasis", { fg = palette.fg_alt, italic = false })
-    set_hl("@markup.italic", { fg = palette.fg_alt, italic = false })
+    set_hl("@markup.italic", { link = "Italic" })
+    -- set_hl("@markup.italic.markdown_inline", { link = "Italic" })
     set_hl("@markup.strikethrough", {
       fg = dark_theme and utils.darken(palette.violet, 0.2) or utils.lighten(palette.violet, 0.26),
       strikethrough = true,
@@ -523,14 +534,14 @@ doom_one.set_colorscheme = function()
     set_hl("@string.special.url", { link = "URL" })
     -- --- Functions
     -- --
-    set_hl("@constructor", { link = "Structure" })
+    set_hl("@constructor", { link = "Constructor" })
     -- set_hl("@variable.parameter", { link = "Argument" })
     -- set_hl("@variable.parameter.builtin", { link = "Argument" })
     -- --
     --- Keywords
     -- --
     set_hl("@keyword", { link = "Keyword" })
-    -- set_hl("@keyword.function", { link = "KeywordFunction" })
+    set_hl("@keyword.function", { link = "Function" })
     -- --
     --
     set_hl("@label", { link = "Label" })
@@ -552,7 +563,7 @@ doom_one.set_colorscheme = function()
     set_hl("@markup.raw.markdown_inline", { link = "String" })
     set_hl("@markup.raw.block", { link = "String" })
     set_hl("@markup.raw.delimiter", { link = "Delimiter" })
-    set_hl("@markup.link", { link = "Delimiter" })
+    set_hl("@markup.link.markdown_inline", { link = "Delimiter" })
 
     set_hl("@markup.list.unchecked", { link = "TypeBuiltin" })
     set_hl("@markup.list.checked", { link = "TypeBuiltin" })
@@ -567,13 +578,44 @@ doom_one.set_colorscheme = function()
     set_hl("bashSpecialVariables", { link = "SpecialBold" })
     set_hl("bashStatement", { link = "Statement" })
 
+    -- -- neorg
+    -- set_hl("@neorg.headings.1.title.norg", { link = "Attribute" })
+    -- set_hl("@neorg.headings.2.title.norg", { link = "Attribute" })
+    -- set_hl("@neorg.headings.3.title.norg", { link = "Attribute" })
+    -- set_hl("@neorg.headings.4.title.norg", { link = "Attribute" })
+    -- set_hl("@neorg.headings.5.title.norg", { link = "Attribute" })
+    -- set_hl("@neorg.headings.1.prefix.norg", { link = "Attribute" })
+    -- set_hl("@neorg.headings.2.prefix.norg", { link = "Attribute" })
+    -- set_hl("@neorg.headings.3.prefix.norg", { link = "Attribute" })
+    -- set_hl("@neorg.headings.4.prefix.norg", { link = "Attribute" })
+    -- set_hl("@neorg.headings.5.prefix.norg", { link = "Attribute" })
+    -- set_hl("@neorg.anchors.declaration", { link = "URL" })
+    -- set_hl("@neorg.anchors.declaration.delimiter.norg", { link = "Delimiter" })
+    set_hl("@repeat", { link = "Repeat" })
+    set_hl("@namespace", { link = "VariableBuiltin" })
+
+    -- org
+    set_hl("OrgTSHeadlineLevel1", { link = "Attribute" })
+    set_hl("OrgTSHeadlineLevel2", { link = "Attribute" })
+    set_hl("OrgTSHeadlineLevel3", { link = "Attribute" })
+    set_hl("OrgTSHeadlineLevel4", { link = "Attribute" })
+    set_hl("OrgTSHeadlineLevel5", { link = "Attribute" })
+    set_hl("OrgTSPropertyDrawer", { link = "Comment" })
+    set_hl("org_hyperlink", { link = "URL" })
+    set_hl("OrgTODO", { link = "Todo" })
+    set_hl("OrgTODO_builtin", { link = "Todo" })
+
+    -- vimdoc
+    set_hl("@label.vimdoc", { link = "Identifier" })
+    set_hl("@markup.link.vimdoc", { link = "Identifier" })
+
     -- sh
-    set_hl("shArithParen", { link = "@punctuation.bracket" })
-    set_hl("shDblBrace", { link = "@punctuation.bracket" })
-    set_hl("shDblParen", { link = "@punctuation.bracket" })
-    set_hl("shIf", { link = "Keyword" })
-    set_hl("shFor", { link = "Keyword" })
-    set_hl("shOK", { link = "Success" })
+    -- set_hl("shArithParen", { link = "@punctuation.bracket" })
+    -- set_hl("shDblBrace", { link = "@punctuation.bracket" })
+    -- set_hl("shDblParen", { link = "@punctuation.bracket" })
+    -- set_hl("shIf", { link = "Keyword" })
+    -- set_hl("shFor", { link = "Keyword" })
+    -- set_hl("shOK", { link = "Success" })
 
     -- zsh
     set_hl("zshBrackets", { link = "@punctuation.bracket" })
@@ -919,6 +961,7 @@ doom_one.set_colorscheme = function()
   --  set_hl("LazyButton", { bg = "bg" })
   -- end
   set_hl("LazyButton", { bg = "bg" })
+  set_hl("LazyButtonActive", { link = "IncSearch" })
 
   -- }}}
 
