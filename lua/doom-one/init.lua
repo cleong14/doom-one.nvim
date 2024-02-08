@@ -208,6 +208,7 @@ doom_one.set_colorscheme = function()
     Success = palette.green,
     Warning = palette.yellow,
     Debug = palette.yellow,
+    Trace = palette.violet,
     Error = palette.red,
     Special = palette.violet,
     Muted = dark_theme and palette.base7 or palette.base5,
@@ -237,6 +238,10 @@ doom_one.set_colorscheme = function()
   set_hl("WarningBold", { link = "TextWarningBold" })
   set_hl("Info", { link = "TextInfo" })
   set_hl("InfoBold", { link = "TextInfoBold" })
+  set_hl("Debug", { link = "TextDebug" })
+  set_hl("DebugBold", { link = "TextDebugBold" })
+  set_hl("Trace", { link = "TextTrace" })
+  set_hl("TraceBold", { link = "TextTraceBold" })
   set_hl("Hint", { link = "TextHint" })
   set_hl("HintBold", { link = "TextHintBold" })
   set_hl("Ok", { link = "TextOk" })
@@ -595,12 +600,28 @@ doom_one.set_colorscheme = function()
     set_hl("@namespace", { link = "VariableBuiltin" })
 
     -- org
-    set_hl("OrgTSHeadlineLevel1", { link = "Attribute" })
-    set_hl("OrgTSHeadlineLevel2", { link = "Attribute" })
-    set_hl("OrgTSHeadlineLevel3", { link = "Attribute" })
-    set_hl("OrgTSHeadlineLevel4", { link = "Attribute" })
-    set_hl("OrgTSHeadlineLevel5", { link = "Attribute" })
-    set_hl("OrgTSPropertyDrawer", { link = "Comment" })
+    -- set_hl("OrgTSHeadlineLevel1", { link = "Attribute" })
+    -- set_hl("OrgTSHeadlineLevel2", { link = "Attribute" })
+    -- set_hl("OrgTSHeadlineLevel3", { link = "Attribute" })
+    -- set_hl("OrgTSHeadlineLevel4", { link = "Attribute" })
+    -- set_hl("OrgTSHeadlineLevel5", { link = "Attribute" })
+    -- set_hl("OrgTSPropertyDrawer", { link = "Comment" })
+    -- set_hl("org_hyperlink", { link = "URL" })
+    -- set_hl("OrgTODO", { link = "Todo" })
+    -- set_hl("OrgTODO_builtin", { link = "Todo" })
+    set_hl("@OrgTSHeadlineLevel1", { link = "Attribute" })
+    set_hl("@OrgTSHeadlineLevel2", { link = "Attribute" })
+    set_hl("@OrgTSHeadlineLevel3", { link = "Attribute" })
+    set_hl("@OrgTSHeadlineLevel4", { link = "Attribute" })
+    set_hl("@OrgTSHeadlineLevel5", { link = "Attribute" })
+    set_hl("@OrgTSHeadlineLevel1.org", { link = "Attribute" })
+    set_hl("@OrgTSHeadlineLevel2.org", { link = "Attribute" })
+    set_hl("@OrgTSHeadlineLevel3.org", { link = "Attribute" })
+    set_hl("@OrgTSHeadlineLevel4.org", { link = "Attribute" })
+    set_hl("@OrgTSHeadlineLevel5.org", { link = "Attribute" })
+    set_hl("@OrgTSDirective", { link = "Comment" })
+    set_hl("@OrgTSPropertyDrawer", { link = "Comment" })
+    set_hl("@OrgTSPropertyDrawer.org", { link = "Comment" })
     set_hl("org_hyperlink", { link = "URL" })
     set_hl("OrgTODO", { link = "Todo" })
     set_hl("OrgTODO_builtin", { link = "Todo" })
@@ -1061,6 +1082,36 @@ doom_one.set_colorscheme = function()
   end
 
   -- }}}
+
+  -- -- notify {{{
+  --
+  -- --  -- TODO: setup notify integration
+  -- --  --
+  -- -- if config.plugins.notify then
+  -- --  set_hl("NotifyERRORIcon", { link = "Error" })
+  -- -- end
+  -- set_hl("NotifyERRORIcon", { link = "Error" })
+  -- set_hl("NotifyWARNIcon", { link = "Warning" })
+  -- set_hl("NotifyINFOIcon", { link = "Info" })
+  -- set_hl("NotifyDEBUGIcon", { link = "Debug" })
+  -- set_hl("NotifyTRACEIcon", { link = "Trace" })
+  -- set_hl("NotifyERRORTitle", { link = "Error" })
+  -- set_hl("NotifyWARNTitle", { link = "Warning" })
+  -- set_hl("NotifyINFOTitle", { link = "Info" })
+  -- set_hl("NotifyDEBUGTitle", { link = "Debug" })
+  -- set_hl("NotifyTRACETitle", { link = "Trace" })
+  -- set_hl("NotifyERRORBorder", { link = "NormalFloatBorder" })
+  -- set_hl("NotifyWARNBorder", { link = "NormalFloatBorder" })
+  -- set_hl("NotifyINFOBorder", { link = "NormalFloatBorder" })
+  -- set_hl("NotifyDEBUGBorder", { link = "NormalFloatBorder" })
+  -- set_hl("NotifyTRACEBorder", { link = "NormalFloatBorder" })
+  -- set_hl("NotifyERRORBody", { link = "NormalFloat" })
+  -- set_hl("NotifyWARNBody", { link = "NormalFloat" })
+  -- set_hl("NotifyINFOBody", { link = "NormalFloat" })
+  -- set_hl("NotifyDEBUGBody", { link = "NormalFloat" })
+  -- set_hl("NotifyTRACEBody", { link = "NormalFloat" })
+  --
+  -- -- }}}
 
 end
 
