@@ -259,8 +259,8 @@ doom_one.set_colorscheme = function()
   set_hl("URL", { link = "Link" })
   set_hl("Underlined", { fg = utils.mix(palette.blue, palette.cyan, 0.5), underline = true })
 
-  set_hl("Italic", { italic = false })
-  -- set_hl("Italic", { fg = dark_theme and utils.lighten(palette.base6, 0.1) or palette.base5, italic = false })
+  -- set_hl("Italic", { italic = false })
+  set_hl("Italic", { fg = dark_theme and utils.lighten(palette.fg, 0.2) or palette.fg, italic = false })
   set_hl("Comment", { fg = dark_theme and utils.lighten(palette.base5, 0.1) or palette.base4, italic = false })
   set_hl("CommentBold", { fg = dark_theme and utils.lighten(palette.base5, 0.1) or palette.base4, bold = true })
   set_hl("SpecialComment", { fg = dark_theme and palette.base7 or palette.base5, bold = true })
@@ -632,6 +632,9 @@ doom_one.set_colorscheme = function()
     -- set_hl("@tag.tsx", { link = "@tag" })
     -- set_hl("@constructor.tsx", { link = "@constructor" })
     -- set_hl("@tag.delimiter.tsx", { link = "@tag.delimiter" })
+
+    -- -- Markdown - LSP Semantic Token Groups
+    -- set_hl("@lsp.type.class.markdown", { link = "Identifier" })
 
     -- -- LSP Semantic Token Groups
     -- set_hl("@lsp.type.boolean", { link = "@boolean" })
