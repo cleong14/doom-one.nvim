@@ -36,8 +36,8 @@ local colors = {
 		yellow = "#ecbe7b",
 		blue = "#51afef",
 		dark_blue = "#2257a0",
-		magenta = "#c678dd",
-		violet = "#a9a1e1",
+		magenta = "#c678dd", -- "violet" used as "magenta" in alacritty.toml
+		violet = "#a9a1e1", -- "magenta" in alacritty.toml
 		cyan = "#46d9ff",
 		dark_cyan = "#5699af",
   },
