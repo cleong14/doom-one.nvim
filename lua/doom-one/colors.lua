@@ -12,7 +12,9 @@ local colors = {
     bg = "#171d23",  -- editor background - darker (MyCustom_DoomOne_TokyoNight_Night)
     fg = "#bbc2cf",
 
-    bg_alt = "#23272e",
+    -- bg_alt = "#23272e", -- previous
+    -- bg_alt = "#2f334d", -- tokyonight-moon
+    bg_alt = "#292e42", -- tokyonight-night
     -- bg_alt = "#21242b", -- default cursorline
     -- bg_alt = "#1D2026", -- cursorline
     fg_alt = "#5b6268",
