@@ -17,7 +17,8 @@ local colors = {
 
     -- bg_alt = "#23272e", -- previous
     -- bg_alt = "#2f334d", -- tokyonight-moon
-    bg_alt = "#292e42", -- tokyonight-night (tokyonight default)
+    -- bg_alt = "#292e42", -- tokyonight-night (tokyonight default)
+    bg_alt = "#24293b", -- tokyonight-night (1 shade darker than #292e42)
     -- bg_alt = "#21242b", -- default cursorline
     -- bg_alt = "#1D2026", -- cursorline
     fg_alt = "#5b6268",
