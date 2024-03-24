@@ -23,7 +23,8 @@ local colors = {
     -- bg_alt = "#1D2026", -- cursorline
     fg_alt = "#5b6268",
 
-		base0 = "#1b2229",
+		-- base0 = "#1b2229", -- tmux statusline (status-style) bg
+		base0 = "#181e24", -- tmux statusline (status-style) bg - 1 shade darker than #1b2229
 		base1 = "#1c1e1e",
 		-- base1 = "#171d23", -- editor background - darker (MyCustom_DoomOne_TokyoNight_Night)
 		base2 = "#202328",
@@ -62,7 +63,8 @@ local colors = {
 		base5 = "#424242",
 		base6 = "#2e2e2e",
 		base7 = "#1e1e1e",
-		base8 = "#1b2229",
+		-- base8 = "#1b2229",
+		base8 = "#181e24", -- 1 shade darker than #1b2229
 
 		grey = "#9ca0a4",
 		red = "#e45649",
