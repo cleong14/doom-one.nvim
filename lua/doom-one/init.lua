@@ -190,7 +190,7 @@ doom_one.set_colorscheme = function()
   set_hl("Title", { fg = palette.violet, bold = true })
 
   set_hl("Bold", { bold = true })
-  set_hl("Emphasis", { italic = false })
+  set_hl("Emphasis", { italic = true })
 
   set_hl("SpellBad", { underline = true })
   set_hl("SpellCap", { underline = true })
@@ -259,7 +259,7 @@ doom_one.set_colorscheme = function()
   set_hl("URL", { link = "Link" })
   set_hl("Underlined", { fg = utils.mix(palette.blue, palette.cyan, 0.5), underline = true })
 
-  set_hl("Italic", { italic = false })
+  set_hl("Italic", { italic = true })
   -- set_hl("Italic", { fg = dark_theme and utils.lighten(palette.fg, 0.2) or palette.fg, italic = false })
   set_hl("Comment", { fg = dark_theme and utils.lighten(palette.base5, 0.1) or palette.base4, italic = false })
   set_hl("CommentBold", { fg = dark_theme and utils.lighten(palette.base5, 0.1) or palette.base4, bold = true })
@@ -493,7 +493,7 @@ doom_one.set_colorscheme = function()
     --
     -- set_hl("@markup.math", { link = "Special" })
     set_hl("@markup.strong", { bold = true })
-    set_hl("@markup.emphasis", { fg = palette.fg_alt, italic = false })
+    set_hl("@markup.emphasis", { fg = palette.fg_alt, italic = true })
     set_hl("@markup.italic", { link = "Italic" })
     -- set_hl("@markup.italic.markdown_inline", { link = "Italic" })
     set_hl("@markup.strikethrough", {
