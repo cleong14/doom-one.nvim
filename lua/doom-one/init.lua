@@ -60,7 +60,8 @@ doom_one.set_colorscheme = function()
   -- Set UI options
   ------------------
   if config.ui.cursor_coloring then
-    vim.opt.guicursor = "n-v-c:block-Cursor,i-ci-ve:ver25-Cursor,r-cr-o:hor25-Cursor"
+    -- vim.opt.guicursor = "n-v-c:block-Cursor,i-ci-ve:ver25-Cursor,r-cr-o:hor25-Cursor"
+    vim.opt.guicursor = "a:blinkon0"
   end
 
   if config.ui.pumblend.enable then
@@ -114,7 +115,7 @@ doom_one.set_colorscheme = function()
   set_hl("VisualBold", { bg = palette.dark_blue, bold = true })
 
   set_hl("LineNr", { bg = "bg", fg = palette.grey })
-  set_hl("Cursor", { bg = palette.blue, fg = palette.bg_alt })
+  set_hl("Cursor", { bg = palette.blue, fg = palette.bg })
   set_hl("CursorLine", { bg = palette.bg_alt })
   set_hl("CursorLineNr", { bg = palette.bg_alt, fg = "fg" })
   set_hl("CursorColumn", { bg = palette.bg_alt })
@@ -177,7 +178,7 @@ doom_one.set_colorscheme = function()
   set_hl("Conceal", { fg = palette.grey })
   set_hl("SpecialKey", { fg = palette.violet, bold = true })
   set_hl("NonText", { fg = palette.fg_alt, bold = true, ctermbg = "NONE", ctermfg = "NONE" })
-  set_hl("MatchParen", { fg = palette.red, bold = true })
+  set_hl("MatchParen", { bg = palette.bg, fg = palette.red, bold = true })
   set_hl("Whitespace", { fg = palette.grey })
 
   set_hl("Highlight", { bg = palette.bg_alt })
