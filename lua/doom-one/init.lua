@@ -261,7 +261,7 @@ doom_one.set_colorscheme = function()
   set_hl("Tag", { fg = utils.mix(palette.blue, palette.cyan, 0.5), bold = true })
   set_hl("Link", { fg = palette.green, underline = true })
   set_hl("URL", { link = "Link" })
-  set_hl("Underlined", { fg = utils.mix(palette.blue, palette.cyan, 0.5), underline = true })
+  set_hl("Underlined", { underline = true })
 
   set_hl("Italic", { italic = true })
   -- set_hl("Italic", { fg = dark_theme and utils.lighten(palette.fg, 0.2) or palette.fg, italic = false })
@@ -516,6 +516,7 @@ doom_one.set_colorscheme = function()
     -- set_hl("@comment.todo", { link = "Todo" })
     -- --
     set_hl("@markup.link.url", { link = "URL" })
+    set_hl("mkdInlineURL", { link = "URL" })
     -- --
     set_hl("@type", { link = "Type" })
     set_hl("@type.definition", { link = "Typedef" })
