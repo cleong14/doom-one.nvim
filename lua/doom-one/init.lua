@@ -350,25 +350,25 @@ doom_one.set_colorscheme = function()
 
   --- Diff
   --------
-  set_hl("diffLine", { fg = palette.base8, bg = diff_change_linebg })
-  set_hl("diffSubName", { fg = palette.base8, bg = diff_change_linebg })
-
-  set_hl("DiffAdd", { bg = palette.grey })
-  set_hl("DiffChange", { bg = palette.grey })
-  set_hl("DiffText", { bg = palette.grey })
-  set_hl("DiffDelete", { bg = palette.grey })
-
-  set_hl("DiffAdded", { fg = diff_add_fg, bg = diff_add_bg })
-  set_hl("DiffModified", { fg = diff_change_fg, bg = diff_change_bg })
-  set_hl("DiffRemoved", { fg = diff_delete_fg, bg = diff_delete_bg })
-
-  set_hl("DiffAddedGutter", { fg = diff_add_fg, bold = true })
-  set_hl("DiffModifiedGutter", { fg = diff_change_fg, bold = true })
-  set_hl("DiffRemovedGutter", { fg = diff_delete_fg, bold = true })
+  set_hl("DiffAddedGutter", { fg = palette.green, bold = true })
+  set_hl("DiffModifiedGutter", { fg = palette.blue, bold = true })
+  set_hl("DiffRemovedGutter", { fg = palette.red, bold = true })
 
   set_hl("DiffAddedGutterLineNr", { fg = palette.grey })
   set_hl("DiffModifiedGutterLineNr", { fg = palette.grey })
   set_hl("DiffRemovedGutterLineNr", { fg = palette.grey })
+
+  set_hl("DiffAdd", { link = "DiffAddedGutter" })
+  set_hl("DiffChange", { link = "DiffModifiedGutter" })
+  set_hl("DiffDelete", { link = "DiffRemovedGutter" })
+  set_hl("DiffText", { bg = palette.base3 })
+
+  set_hl("DiffAdded", { fg = palette.green, bg = palette.bg_alt })
+  set_hl("DiffModified", { fg = palette.violet })
+  set_hl("DiffRemoved", { fg = palette.red, bg = palette.base3 })
+
+  set_hl("diffLine", { fg = palette.violet })
+  set_hl("diffSubName", { fg = palette.cyan })
 
 
   --- Markdown
@@ -397,10 +397,15 @@ doom_one.set_colorscheme = function()
 
   set_hl("LspHighlight", { bg = palette.bg_alt, bold = true })
   set_hl("LspSignatureActiveParameter", { fg = palette.violet })
+  set_hl("LspReferenceText", { link = "LspHighlight" })
+  set_hl("LspReferenceRead", { link = "LspHighlight" })
+  set_hl("LspReferenceWrite", { link = "LspHighlight" })
+
   set_hl("DiagnosticFloatingError", { link = "ErrorMsg" })
   set_hl("DiagnosticFloatingWarn", { link = "WarningMsg" })
   set_hl("DiagnosticFloatingInfo", { link = "MoreMsg" })
   set_hl("DiagnosticFloatingHint", { link = "Msg" })
+  set_hl("DiagnosticFloatingOk", { link = "Msg" })
   set_hl("DiagnosticDefaultError", { link = "ErrorMsg" })
   set_hl("DiagnosticDefaultWarn", { link = "WarningMsg" })
   set_hl("DiagnosticDefaultInfo", { link = "MoreMsg" })
@@ -409,22 +414,24 @@ doom_one.set_colorscheme = function()
   set_hl("DiagnosticVirtualTextWarn", { link = "WarningMsg" })
   set_hl("DiagnosticVirtualTextInfo", { link = "MoreMsg" })
   set_hl("DiagnosticVirtualTextHint", { link = "Msg" })
+  set_hl("DiagnosticVirtualTextOk", { link = "Msg" })
   set_hl("DiagnosticUnderlineError", { link = "ErrorMsgUnderline" })
   set_hl("DiagnosticUnderlineWarn", { link = "WarningMsgUnderline" })
   set_hl("DiagnosticUnderlineInfo", { link = "MoreMsgUnderline" })
   set_hl("DiagnosticUnderlineHint", { link = "MsgUnderline" })
+  set_hl("DiagnosticUnderlineOk", { link = "MsgUnderline" })
   set_hl("DiagnosticSignError", { link = "ErrorMsg" })
   set_hl("DiagnosticSignWarn", { link = "WarningMsg" })
   set_hl("DiagnosticSignInfo", { link = "MoreMsg" })
   set_hl("DiagnosticSignHint", { link = "Msg" })
+  set_hl("DiagnosticSignOk", { link = "Msg" })
   set_hl("DiagnosticError", { link = "ErrorMsg" })
   set_hl("DiagnosticWarn", { link = "WarningMsg" })
   set_hl("DiagnosticInfo", { link = "MoreMsg" })
   set_hl("DiagnosticHint", { link = "Msg" })
   set_hl("DiagnosticOk", { link = "Msg" })
-  set_hl("LspReferenceText", { link = "LspHighlight" })
-  set_hl("LspReferenceRead", { link = "LspHighlight" })
-  set_hl("LspReferenceWrite", { link = "LspHighlight" })
+
+  set_hl("DiagnosticDeprecated", { fg = palette.red, strikethrough = true })
 
   --- CMP
   ------------
@@ -587,6 +594,8 @@ doom_one.set_colorscheme = function()
     -- bash
     set_hl("bashSpecialVariables", { link = "SpecialBold" })
     set_hl("bashStatement", { link = "Statement" })
+    set_hl("@variable.parameter.bash", { link = "Variable" })
+    set_hl("@boolean.bash", { link = "Boolean" })
 
     -- -- neorg
     -- set_hl("@neorg.headings.1.title.norg", { link = "Attribute" })
