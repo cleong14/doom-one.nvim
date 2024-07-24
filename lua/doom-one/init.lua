@@ -75,16 +75,6 @@ doom_one.set_colorscheme = function()
 
   local dark_theme = current_bg == "dark"
 
-  local diff_change_fg = palette.blue
-  local diff_change_bg = utils.darken(utils.mix("#D8EEFD", palette.bg, 0.8), 0.2)
-  local diff_change_linebg = utils.darken(utils.mix("#D8EEFD", palette.bg, 0.8), 0.4)
-
-  local diff_add_fg = palette.green
-  local diff_add_bg = utils.darken(utils.mix("#acf2bd", palette.bg, 0.8), 0.2)
-
-  local diff_delete_fg = palette.red
-  local diff_delete_bg = utils.darken(utils.mix("#ffdce0", palette.bg, 0.8), 0.2)
-
   --- GENERAL UI
   -----------------
   -- local bg_highlight = "#1D2125"
@@ -358,17 +348,26 @@ doom_one.set_colorscheme = function()
   set_hl("DiffModifiedGutterLineNr", { fg = palette.grey })
   set_hl("DiffRemovedGutterLineNr", { fg = palette.grey })
 
-  set_hl("DiffAdd", { link = "DiffAddedGutter" })
-  set_hl("DiffChange", { link = "DiffModifiedGutter" })
-  set_hl("DiffDelete", { link = "DiffRemovedGutter" })
-  set_hl("DiffText", { bg = palette.base3 })
+	-- Used by diff mode (see `:help diff-mode`)
+  set_hl("DiffAdd", { bg = palette.base3 })
+  set_hl("DiffChange", { bg = palette.base3 })
+  set_hl("DiffDelete", { fg = palette.red })
+  set_hl("DiffText", { bg = palette.dark_blue })
 
-  set_hl("DiffAdded", { fg = palette.green, bg = palette.bg_alt })
-  set_hl("DiffModified", { fg = palette.violet })
-  set_hl("DiffRemoved", { fg = palette.red, bg = palette.base3 })
+  set_hl("DiffAdded", { bg = palette.base3 })
+  set_hl("DiffModified", { bg = palette.base3 })
+  set_hl("DiffRemoved", { fg = palette.red })
 
+	-- Used by diff filetype (see `$VIMRUNTIME/syntax/diff.vim`)
+	set_hl("diffAdded", { bg = palette.base3 })
+	set_hl("diffChanged", { bg = palette.base3 })
+	set_hl("diffRemoved", { fg = palette.red })
   set_hl("diffLine", { fg = palette.violet })
-  set_hl("diffSubName", { fg = palette.cyan })
+	set_hl("diffIndexLine", { fg = palette.cyan })
+	set_hl("diffSubname", { fg = palette.cyan })
+	set_hl("diffFile", { fg = palette.cyan })
+	set_hl("diffOldFile", { fg = palette.blue })
+	set_hl("diffNewFile", { fg = palette.blue })
 
 
   --- Markdown
@@ -814,6 +813,7 @@ doom_one.set_colorscheme = function()
     set_hl("TelescopeMatching", { fg = palette.blue, bold = true })
     set_hl("TelescopeSelection", { fg = palette.yellow, bold = true })
     set_hl("TelescopeSelectionCaret", { fg = dark_theme and palette.blue or palette.red })
+    set_hl("TelescopePathSeparator", { link = "NonText" })
   end
 
   if config.plugins.neogit then
@@ -1076,10 +1076,47 @@ doom_one.set_colorscheme = function()
   -- gitsigns{{{
 
   if config.plugins.gitsigns then
-    set_hl("GitSignsAddInline", { link = "DiffAdded" })
-    set_hl("GitSignsDeleteInline", { link = "DiffRemoved" })
-    set_hl("GitSignsChangeInline", { link = "DiffModified" })
+    set_hl("GitSignsAddInline", { link = "DiffAddedGutter" })
+    set_hl("GitSignsDeleteInline", { link = "DiffRemovedGutter" })
+    set_hl("GitSignsChangeInline", { link = "DiffModifiedGutter" })
+    set_hl("GitSignsAddPreview", { fg = palette.green })
+    set_hl("GitSignsDeletePreview", { fg = palette.red })
   end
+
+  -- }}}
+
+  -- render-markdown{{{
+
+  set_hl("RenderMarkdownH1", { link = "Title" })
+  set_hl("RenderMarkdownH2", { link = "Title" })
+  set_hl("RenderMarkdownH3", { link = "Title" })
+  set_hl("RenderMarkdownH4", { link = "Title" })
+  set_hl("RenderMarkdownH5", { link = "Title" })
+  set_hl("RenderMarkdownH6", { link = "Title" })
+  set_hl("RenderMarkdownH1Bg", { bg = palette.grey })
+  set_hl("RenderMarkdownH2Bg", { bg = palette.grey })
+  set_hl("RenderMarkdownH3Bg", { bg = palette.grey })
+  set_hl("RenderMarkdownH4Bg", { bg = palette.grey })
+  set_hl("RenderMarkdownH5Bg", { bg = palette.grey })
+  set_hl("RenderMarkdownH6Bg", { bg = palette.grey })
+  set_hl("RenderMarkdownCode", { link = "ColorColumn" })
+  set_hl("RenderMarkdownBullet", { link = "Normal" })
+  set_hl("RenderMarkdownQuote", { link = "@markup.quote" })
+  set_hl("RenderMarkdownDash", { link = "LineNr" })
+  set_hl("RenderMarkdownLink", { link = "Link" })
+  set_hl("RenderMarkdownSign", { link = "SignColumn" })
+  set_hl("RenderMarkdownMath", { link = "@markup.math" })
+  set_hl("RenderMarkdownUnchecked", { link = "@markup.list.unchecked" })
+  set_hl("RenderMarkdownChecked", { link = "@markup.list.checked" })
+  set_hl("RenderMarkdownTodo", { link = "@todo" })
+  set_hl("RenderMarkdownTableHead", { link = "@markup.heading" })
+  set_hl("RenderMarkdownTableRow", { link = "Normal" })
+  set_hl("RenderMarkdownTableFill", { link = "Conceal" })
+  set_hl("RenderMarkdownSuccess", { link = "DiagnosticOk" })
+  set_hl("RenderMarkdownInfo", { link = "DiagnosticInfo" })
+  set_hl("RenderMarkdownHint", { link = "DiagnosticHint" })
+  set_hl("RenderMarkdownWarn", { link = "DiagnosticWarn" })
+  set_hl("RenderMarkdownError", { link = "DiagnosticError" })
 
   -- }}}
 
