@@ -350,8 +350,8 @@ doom_one.set_colorscheme = function()
   set_hl("DiffRemovedGutterLineNr", { fg = palette.grey })
 
 	-- Used by diff mode (see `:help diff-mode`)
-  set_hl("DiffAdd", { bg = palette.base3 })
-  set_hl("DiffChange", { bg = palette.base3 })
+  set_hl("DiffAdd", { bg = utils.darken(palette.green, 0.7) })
+  set_hl("DiffChange", { bg = utils.darken(palette.blue, 0.7) })
   set_hl("DiffDelete", { fg = palette.red })
   set_hl("DiffText", { bg = palette.dark_blue })
 
