@@ -45,6 +45,7 @@ local config = {
     noice = if_nil(vim.g.doom_one_plugin_noice, false),
     highlight_undo = if_nil(vim.g.doom_one_plugin_highlight_undo, false),
     vim_visual_multi = if_nil(vim.g.doom_one_plugin_vim_visual_multi, false),
+    -- multicursor_nvim = if_nil(vim.g.doom_one_plugin_multicursor_nvim, false),
     gitsigns = if_nil(vim.g.doom_one_plugin_gitsigns, false),
   },
 }
@@ -1072,6 +1073,20 @@ doom_one.set_colorscheme = function()
   end
 
   -- }}}
+
+  -- -- multicursor_nvim{{{
+  --
+  -- if config.plugins.multicursor_nvim then
+  --   set_hl("MultiCursorCursor", { link = "Cursor" })
+  --   set_hl("MultiCursorVisual", { link = "Visual" })
+  --   set_hl("MultiCursorSign", { link = "SignColumn" })
+  --   set_hl("MultiCursorMatchPreview", { link = "Search" })
+  --   set_hl("MultiCursorDisabledCursor", { link = "Visual" })
+  --   set_hl("MultiCursorDisabledVisual", { link = "Visual" })
+  --   set_hl("MultiCursorDisabledSign", { link = "SignColumn" })
+  -- end
+  --
+  -- -- }}}
 
   -- gitsigns{{{
 
