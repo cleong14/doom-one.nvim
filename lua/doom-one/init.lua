@@ -341,9 +341,13 @@ doom_one.set_colorscheme = function()
 
   --- Diff
   --------
-  set_hl("DiffAddedGutter", { fg = palette.green, bold = true })
-  set_hl("DiffModifiedGutter", { fg = palette.blue, bold = true })
-  set_hl("DiffRemovedGutter", { fg = palette.red, bold = true })
+  set_hl("Added", { fg = palette.green, bold = true })
+  set_hl("Changed", { fg = palette.blue, bold = true })
+  set_hl("Removed", { fg = palette.red, bold = true })
+
+  set_hl("DiffAddedGutter", { link = "Added" })
+  set_hl("DiffModifiedGutter", { link = "Changed" })
+  set_hl("DiffRemovedGutter", { link = "Removed" })
 
   set_hl("DiffAddedGutterLineNr", { fg = palette.grey })
   set_hl("DiffModifiedGutterLineNr", { fg = palette.grey })
